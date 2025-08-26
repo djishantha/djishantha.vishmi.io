@@ -66,7 +66,7 @@ h2 {
 </head>
 <body>
     <div class="container">
-        <h1>Harshana & Vishmi Wedding</h1>
+        <h1>Find Your Table</h1>
         <input type="text" id="firstNameInput" placeholder="Enter your first name">
         <button id="findTableBtn">Table Number</button>
         <div id="results"></div>
