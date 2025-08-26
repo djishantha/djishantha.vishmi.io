@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Harshana & Vishmi Wedding2</title>
+    <title>Welcome you for Harshana & Vishmi Wedding</title>
     <style>
         body {
             font-family: sans-serif;
