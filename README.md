@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Harshana & Vishmi Wedding</title>
+    <h1 class="main-welcome">WELCOME !</h1>
+    <h2>Harshana & Vishmi Wedding</h2>
+<h3 class="hotel-name">JETWING BLUE - NEGOMBO</h3>
     <style>
         body {
             font-family: sans-serif;
@@ -10,7 +12,23 @@
             text-align: center;
             padding: 50px;
         }
+.main-welcome {
+    font-size: 64px; /* Double typical title (e.g. if original was ~32px) */
+    color: blue;
+    font-family: 'Cursive', 'Brush Script MT', sans-serif;
+    margin-bottom: 10px;
+}
 
+h2 {
+    font-size: 32px;
+    margin: 10px 0;
+}
+.hotel-name {
+    font-size: 16px; /* Half of h2 */
+    color: green;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin-top: 5px;
+}
         .container {
             background-color: white;
             padding: 30px;
