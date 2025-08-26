@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome you for Harshana & Vishmi Wedding</title>
+    <title>Harshana & Vishmi Wedding</title>
     <style>
         body {
             font-family: sans-serif;
@@ -48,7 +48,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome you for Harshana & Vishmi Wedding</h1>
+        <h1>Harshana & Vishmi Wedding</h1>
         <input type="text" id="firstNameInput" placeholder="Enter your first name">
         <button id="findTableBtn">Table Number</button>
         <div id="results"></div>
