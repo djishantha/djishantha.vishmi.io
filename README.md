@@ -48,7 +48,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Harshana & Vishmi Wedding2</h1>
+        <h1>Welcome you for Harshana & Vishmi Wedding</h1>
         <input type="text" id="firstNameInput" placeholder="Enter your first name">
         <button id="findTableBtn">Table Number</button>
         <div id="results"></div>
