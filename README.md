@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <h1 class="main-welcome">WELCOME !</h1>
-    <h2>Harshana & Vishmi Wedding</h2>
+    <h2>Harshana & Vishmi Wedding2</h2>
 <h3 class="hotel-name">JETWING BLUE - NEGOMBO</h3>
     <style>
         body {
