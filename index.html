@@ -58,6 +58,20 @@ h2 {
         button:hover {
             background-color: #0056b3;
         }
+        #findCarParkBtn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#findCarParkBtn:hover {
+    background-color: #1e7e34;
+}
 
         #results {
             margin-top: 20px;
@@ -81,6 +95,7 @@ h2 {
         <button id="findTableBtn">Table Number</button>
         <div id="results"></div>
         <img src="table-plan.jpg" alt="Wedding Table Plan" class="table-plan">
+        <button id="findCarParkBtn">Find Your Car Park</button>
     </div>
 
     <script>
@@ -122,5 +137,11 @@ h2 {
             });
         });
     </script>
+    <script>
+    document.getElementById("findCarParkBtn").addEventListener("click", function () {
+        // Replace this URL with the actual car park location link
+        window.open("https://maps.app.goo.gl/rW5yMQzisJt6ZzSM8", "_blank");
+    });
+</script>
 </body>
 </html>
