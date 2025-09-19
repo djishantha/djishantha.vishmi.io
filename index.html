@@ -96,11 +96,12 @@ h2 {
   position: relative;
   width: 90vw;
   height: 90vw;
-  background-image: url("Jetwing Blue.jpg"); /* Optional */
+  background-image: url('Jetwing Blue.jpg');
   background-size: cover;
   background-position: center;
+  margin: 0 auto 40px;
   border: 2px solid #ccc;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .circle {
@@ -117,17 +118,34 @@ h2 {
   position: absolute;
 }
 
-/* Positioning for all 34 circles */
-.c1  { top: 5vw; left: 5vw; }
-.c2  { top: 5vw; left: 15vw; }
-.c3  { top: 5vw; left: 25vw; }
-.c4  { top: 5vw; left: 45vw; }
-.c5  { top: 5vw; left: 55vw; }
-.c6  { top: 5vw; left: 65vw; }
+.dance-floor {
+  position: absolute;
+  top: 10vw;
+  left: 35vw;
+  width: 8vw;
+  height: 30vw;
+  background-color: rgba(255, 192, 203, 0.3);
+  border: 2px dashed #999;
+  text-align: center;
+  font-size: 1.2vw;
+  padding-top: 14vw;
+  color: #666;
+  font-weight: bold;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}
 
-.c7  { top: 15vw; left: 5vw; }
-.c8  { top: 15vw; left: 15vw; }
-.c9  { top: 15vw; left: 25vw; }
+/* Table positions */
+.c1 { top: 5vw; left: 5vw; }
+.c2 { top: 5vw; left: 15vw; }
+.c3 { top: 5vw; left: 25vw; }
+.c4 { top: 5vw; left: 45vw; }
+.c5 { top: 5vw; left: 55vw; }
+.c6 { top: 5vw; left: 65vw; }
+
+.c7 { top: 15vw; left: 5vw; }
+.c8 { top: 15vw; left: 15vw; }
+.c9 { top: 15vw; left: 25vw; }
 .c10 { top: 15vw; left: 45vw; }
 .c11 { top: 15vw; left: 55vw; }
 .c12 { top: 15vw; left: 65vw; }
@@ -157,22 +175,6 @@ h2 {
 .c33 { top: 50vw; left: 66vw; }
 .c34 { top: 50vw; left: 74vw; }
 
-.dance-floor {
-  position: absolute;
-  top: 10vw;
-  left: 35vw;
-  width: 8vw;
-  height: 30vw;
-  background-color: rgba(255, 192, 203, 0.3);
-  border: 2px dashed #999;
-  text-align: center;
-  font-size: 1.2vw;
-  padding-top: 14vw;
-  color: #666;
-  font-weight: bold;
-  writing-mode: vertical-lr;
-  transform: rotate(180deg);
-}
 
     </style>
 </head>
@@ -228,6 +230,23 @@ h2 {
   <div class="circle c31">31</div>
   <div class="circle c32">32</div>
   <div class="circle c33">33</div>
+  <div class="circle c34">34</div>
+</div>
+<!-- Add this AFTER the .container div -->
+<div class="table-layout">
+  <div class="dance-floor">Dancing Floor</div>
+  <!-- 34 blue table circles -->
+  <div class="circle c1">1</div><div class="circle c2">2</div><div class="circle c3">3</div>
+  <div class="circle c4">4</div><div class="circle c5">5</div><div class="circle c6">6</div>
+  <div class="circle c7">7</div><div class="circle c8">8</div><div class="circle c9">9</div>
+  <div class="circle c10">10</div><div class="circle c11">11</div><div class="circle c12">12</div>
+  <div class="circle c13">13</div><div class="circle c14">14</div><div class="circle c15">15</div>
+  <div class="circle c16">16</div><div class="circle c17">17</div><div class="circle c18">18</div>
+  <div class="circle c19">19</div><div class="circle c20">20</div><div class="circle c21">21</div>
+  <div class="circle c22">22</div><div class="circle c23">23</div><div class="circle c24">24</div>
+  <div class="circle c25">25</div><div class="circle c26">26</div><div class="circle c27">27</div>
+  <div class="circle c28">28</div><div class="circle c29">29</div><div class="circle c30">30</div>
+  <div class="circle c31">31</div><div class="circle c32">32</div><div class="circle c33">33</div>
   <div class="circle c34">34</div>
 </div>
 
