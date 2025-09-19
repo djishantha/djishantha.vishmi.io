@@ -300,14 +300,12 @@
                     resultsDiv.textContent = "No guest found with that first name.";
                 } else {
                     const list = document.createElement("ul");
+                    container.querySelectorAll(".circle").forEach(circle => { circle.style.backgroundColor = "blue"; });
                     matches.forEach(guest => {
                         const item = document.createElement("li");
                         item.textContent = `${guest.firstName} ${guest.lastName} - Table ${guest.table}`;
                         list.appendChild(item);
-                         container.querySelectorAll(".circle").forEach(circle => {
-                if (circle.textContent == guest.table || circle.textContent == tableMap[guest.table]) {
-                    circle.style.backgroundColor = "green";
-                }
+                        container.querySelectorAll(".circle").forEach(circle => { if (circle.textContent == guest.table || circle.textContent == tableMap[guest.table]) { circle.style.backgroundColor = "green"; }
                     });
                     resultsDiv.appendChild(list);
                 }
