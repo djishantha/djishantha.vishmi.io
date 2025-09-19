@@ -349,6 +349,30 @@ allCircles.forEach(circle => {
     circle.style.top = (currentTop - 15) + "px"; // move 15px up
   }
 });
+        let editingMode = true; // set false for normal visitors
+let selectedCircle = null;
+
+container.querySelectorAll(".circle").forEach(circle => {
+  circle.addEventListener("click", () => {
+    if(!editingMode) return;
+    if (selectedCircle) selectedCircle.classList.remove("selected");
+    selectedCircle = circle;
+    selectedCircle.classList.add("selected");
+  });
+});
+
+document.addEventListener("keydown", (e) => {
+  if (!editingMode || !selectedCircle) return;
+  let top = parseInt(selectedCircle.style.top);
+  let left = parseInt(selectedCircle.style.left);
+  switch(e.key) {
+    case "ArrowUp": selectedCircle.style.top = (top - 5) + "px"; break;
+    case "ArrowDown": selectedCircle.style.top = (top + 5) + "px"; break;
+    case "ArrowLeft": selectedCircle.style.left = (left - 5) + "px"; break;
+    case "ArrowRight": selectedCircle.style.left = (left + 5) + "px"; break;
+  }
+});
+
 
     </script>
 
