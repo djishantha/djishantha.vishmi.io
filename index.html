@@ -3,281 +3,563 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <h1 class="main-welcome">WELCOME !</h1>
-    <h2>Harshana & Vishmi Wedding</h2>
-<h3 class="hotel-name">JETWING BLUE - NEGOMBO</h3>
+    <title>Harshana & Vishmi Wedding</title>
     <style>
         body {
-    font-family: sans-serif;
-    background-color: #87CEEB;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #87CEEB, #6baed6);
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-.main-welcome {
-    font-size: 64px; /* Double typical title (e.g. if original was ~32px) */
-    color: blue;
-    font-family: 'Cursive', 'Brush Script MT', sans-serif;
-    margin-bottom: 10px;
-}
+        
+        .header {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+        
+        .main-welcome {
+            font-size: 48px;
+            color: #1a73e8;
+            font-family: 'Brush Script MT', cursive;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-h2 {
-    font-size: 32px;
-    margin: 10px 0;
-}
-.hotel-name {
-    font-size: 16px; /* Half of h2 */
-    color: green;
-    font-family: 'Georgia', 'Times New Roman', serif;
-    margin-top: 5px;
-}
-        .container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    margin: 0 auto;
-    max-width: 500px;
-    width: 90%;
-    box-sizing: border-box;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        h2 {
+            font-size: 28px;
+            margin: 10px 0;
+            color: #333;
         }
-     
+        
+        .hotel-name {
+            font-size: 18px;
+            color: #0b8043;
+            font-family: Georgia, serif;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 0 auto 30px;
+            max-width: 800px;
+            width: 90%;
+            box-sizing: border-box;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
         input {
-            padding: 10px;
+            padding: 12px 15px;
             font-size: 16px;
-            margin: 10px 5px;
+            margin: 10px 0;
+            width: 250px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            border-color: #4d90fe;
+            outline: none;
         }
 
         button {
-            padding: 10px 15px;
+            padding: 12px 20px;
             font-size: 16px;
             cursor: pointer;
-            background-color: #007bff;
+            background-color: #1a73e8;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #0d62c9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+        
         #findCarParkBtn {
-    margin-top: 20px;
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
+            background-color: #0b8043;
+            margin-top: 20px;
+        }
 
-#findCarParkBtn:hover {
-    background-color: #1e7e34;
-}
+        #findCarParkBtn:hover {
+            background-color: #0a6b38;
+        }
 
         #results {
             margin-top: 20px;
             font-size: 18px;
             color: #333;
+            min-height: 50px;
         }
-        .table-plan {
-    margin-top: 30px;
-    max-width: 100%;
-    height: auto;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+        
+        .table-diagram {
+            margin: 30px auto;
+            width: 100%;
+            max-width: 700px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dance-floor {
+            fill: #FFD700;
+            stroke: #DAA520;
+            stroke-width: 2;
+        }
+        
+        .dance-floor-label {
+            font-size: 14px;
+            font-weight: bold;
+            fill: #8B4513;
+        }
+        
+        .instructions {
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .table-circle {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .table-circle:hover {
+            filter: brightness(1.2);
+            transform: scale(1.05);
+        }
+        
+        .highlighted {
+            filter: brightness(1.3);
+            stroke: #ff6600;
+            stroke-width: 3;
+        }
+        
+        .footer {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1 class="main-welcome">WELCOME !</h1>
+        <h2>Harshana & Vishmi Wedding</h2>
+        <h3 class="hotel-name">JETWING BLUE - NEGOMBO</h3>
+    </div>
+    
     <div class="container">
         <h1>Find Your Table</h1>
-        <input type="text" id="firstNameInput" placeholder="Enter your first name">
-        <button id="findTableBtn">Table Number</button>
+        <div class="input-section">
+            <input type="text" id="firstNameInput" placeholder="Enter your first name">
+            <button id="findTableBtn">Find My Table</button>
+        </div>
         <div id="results"></div>
-        <img src="Jetwing Blue.jpg" alt="Wedding Table Plan" class="table-plan">
+        
+        <div class="table-diagram" id="tableDiagram">
+            <!-- SVG table layout will be inserted here by JavaScript -->
+        </div>
+        
+        <p class="instructions">Click on any table number to see who's seated there</p>
+        
         <button id="findCarParkBtn">Find Your Car Park</button>
     </div>
 
+    <div class="footer">
+        We look forward to celebrating with you!
+    </div>
+
     <script>
+        // Guest data
         const guests = [
-{ firstName: "Shiromi", lastName: "Sirithunga", table: 1 },
-{ firstName: "Uditha", lastName: "Sirithunga", table: 1 },
-{ firstName: "Milani", lastName: "Sirithunga", table: 1 },
-{ firstName: "Latha", lastName: "Galappaththi", table: 1 },
-{ firstName: "Ajith", lastName: "Dias", table: 1 },
-{ firstName: "Thilani", lastName: "Dias", table: 1 },
-{ firstName: "Shanthi", lastName: "Galappaththi", table: 1 },
-{ firstName: "Rekha", lastName: "De Silva", table: 1 },
-{ firstName: "Prabath", lastName: "Kasthuriarachchi", table: 1 },
-{ firstName: "Akash", lastName: "Hewapathirana", table: 2 },
-{ firstName: "Kanaki", lastName: "Hewapathirana", table: 2 },
-{ firstName: "Dulshani", lastName: "Rajapaksa", table: 2 },
-{ firstName: "Kavisha", lastName: "Sirithunga", table: 2 },
-{ firstName: "Wagisha", lastName: "Sirithunga", table: 2 },
-{ firstName: "Sadew", lastName: "Dias", table: 2 },
-{ firstName: "Yashith", lastName: "Dias", table: 2 },
-{ firstName: "Kisara", lastName: "Kasthuriarachchi", table: 2 },
-{ firstName: "Gangi", lastName: "Gallappththi", table: 2 },
-{ firstName: "Gangi", lastName: "Husband", table: 2 },
-{ firstName: "Neetaha", lastName: "Jayakodi", table: 3 },
-{ firstName: "Indrananda", lastName: "Weerasena", table: 3 },
-{ firstName: "Kumuduni", lastName: "Damayanthi", table: 3 },
-{ firstName: "Luxman", lastName: "Jeewantha", table: 3 },
-{ firstName: "Chandrika", lastName: "Weliwita", table: 3 },
-{ firstName: "Peshaka", lastName: "Ranganath", table: 3 },
-{ firstName: "wife", lastName: "Ranganath", table: 3 },
-{ firstName: "Lakmali", lastName: "Rangani", table: 3 },
-{ firstName: "Nayanajith", lastName: "Dananjaya", table: 3 },
-{ firstName: "wife", lastName: "Dananjaya", table: 3 },
-{ firstName: "Saranapala", lastName: "Saranapala", table: 3 },
-{ firstName: "Kalhari", lastName: "Fernando", table: 4 },
-{ firstName: "Nipun", lastName: "Kalhari", table: 4 },
-{ firstName: "Gayan", lastName: "Weerasena", table: 4 },
-{ firstName: "Champika", lastName: "weerasena", table: 4 },
-{ firstName: "Ayesha", lastName: "Weerasena", table: 4 },
-{ firstName: "Harsha", lastName: "Viraj", table: 4 },
-{ firstName: "Kavishka", lastName: "Jeewantha", table: 4 },
-{ firstName: "HM", lastName: "Mangalika", table: 4 },
-{ firstName: "Nalin", lastName: "Dissanayake", table: 4 },
-{ firstName: "Achini", lastName: "Pushpakumara", table: 4 },
-{ firstName: "Dayal", lastName: "Pushpakumara", table: 5 },
-{ firstName: "Susanthi", lastName: "Manohari", table: 5 },
-{ firstName: "Malee", lastName: "Kannaggara", table: 5 },
-{ firstName: "Aruna", lastName: "Kannaggara", table: 5 },
-{ firstName: "Shashi", lastName: "Shiwaraj", table: 5 },
-{ firstName: "Shiwa", lastName: "Shiwaraj", table: 5 },
-{ firstName: "Devika", lastName: "Kolambage", table: 5 },
-{ firstName: "Chulan", lastName: "Kotudurage", table: 5 },
-{ firstName: "Ranil", lastName: "Liyanage", table: 5 },
-{ firstName: "Iroshika", lastName: "Liyanage", table: 5 },
-{ firstName: "Anudi", lastName: "Kannaggara", table: 6 },
-{ firstName: "Sajani", lastName: "Kannaggara", table: 6 },
-{ firstName: "Suzan", lastName: "Niweda", table: 6 },
-{ firstName: "Sheron", lastName: "Philip", table: 6 },
-{ firstName: "Washni", lastName: "Michlle", table: 6 },
-{ firstName: "Paminda", lastName: "Thilakarathne", table: 6 },
-{ firstName: "Thushari", lastName: "Amarasinghe", table: 6 },
-{ firstName: "Chandani", lastName: "Welarathne", table: 6 },
-{ firstName: "Yenuli", lastName: "Welarathne", table: 6 },
-{ firstName: "Hasanga", lastName: "De Silva", table: 6 },
-{ firstName: "Wsantha", lastName: "Wickramasinghe", table: 7 },
-{ firstName: "Renu", lastName: "Wickramasinghe", table: 7 },
-{ firstName: "Shashila", lastName: "De Silva", table: 7 },
-{ firstName: "Vidushan", lastName: "Wickramasinghe", table: 7 },
-{ firstName: "Shahan", lastName: "Wickramasinghe", table: 7 },
-{ firstName: "Dilki", lastName: "Perera", table: 7 },
-{ firstName: "Champika", lastName: "Subasinghe", table: 7 },
-{ firstName: "Hansi", lastName: "De Silva", table: 7 },
-{ firstName: "Nilmini", lastName: "Dissanayake", table: 7 },
-{ firstName: "Susantha", lastName: "Rupasinghe", table: 7 },
-{ firstName: "Saji", lastName: "De Silva", table: 8 },
-{ firstName: "Saji Son", lastName: "Siriwardena", table: 8 },
-{ firstName: "Nilanthi", lastName: "Perera", table: 8 },
-{ firstName: "Ajith", lastName: "Perera", table: 8 },
-{ firstName: "Nihal", lastName: "Edward", table: 8 },
-{ firstName: "Seetha", lastName: "Edward", table: 8 },
-{ firstName: "Rohana", lastName: "Gunawardena", table: 8 },
-{ firstName: "Devi", lastName: "Gunawardena", table: 8 },
-{ firstName: "Mahesh", lastName: "Karunarathne", table: 8 },
-{ firstName: "Wasanthi", lastName: "Karunarathne", table: 8 },
-{ firstName: "rohini", lastName: "Kaluarachchi", table: 9 },
-{ firstName: "Sunil", lastName: "Kaluarachchi", table: 9 },
-{ firstName: "Isuri", lastName: "Kaluarachchi", table: 9 },
-{ firstName: "Anula", lastName: "Gunarathne", table: 9 },
-{ firstName: "xxxxxx", lastName: "Gunarathne", table: 9 },
-{ firstName: "Lal", lastName: "Rupasinghe", table: 9 },
-{ firstName: "Maya", lastName: "Rupasinghe", table: 9 },
-{ firstName: "Thusitha", lastName: "Ganegoda", table: 9 },
-{ firstName: "wife", lastName: "Ganegoda", table: 9 },
-{ firstName: "Deepani", lastName: "Dewage", table: 9 },
-{ firstName: "Kamal", lastName: "Gunawardena", table: 10 },
-{ firstName: "Geesara", lastName: "Gunawardena", table: 10 },
-{ firstName: "Priyanwada", lastName: "Karunarathne", table: 10 },
-{ firstName: "Wasundara", lastName: "Karunarathne", table: 10 },
-{ firstName: "Nirosha", lastName: "Rupasinghe", table: 10 },
-{ firstName: "Duwa", lastName: "Gunarathne", table: 10 },
-{ firstName: "Sumudu", lastName: "Senarathne", table: 10 },
-{ firstName: "Upul", lastName: "Jayasinghe", table: 10 },
-{ firstName: "Vijitha USA", lastName: "Perera", table: 10 },
-{ firstName: "wife", lastName: "perera", table: 10 },
-{ firstName: "Jayendra", lastName: "Kuruppu", table: 11 },
-{ firstName: "Dammika", lastName: "Kuruppu", table: 11 },
-{ firstName: "Udeni", lastName: "Adikari", table: 11 },
-{ firstName: "Husband", lastName: "Adikari", table: 11 },
-{ firstName: "dammika", lastName: "Koralage", table: 11 },
-{ firstName: "Luxmi", lastName: "Koralage", table: 11 },
-{ firstName: "Sudath", lastName: "Surendra", table: 11 },
-{ firstName: "wife", lastName: "Surendra", table: 11 },
-{ firstName: "Sudath", lastName: "Withanage", table: 11 },
-{ firstName: "wife", lastName: "Withanage", table: 11 },
-{ firstName: "Shantha", lastName: "Walpala", table: 12 },
-{ firstName: "Chamila", lastName: "Walpala", table: 12 },
-{ firstName: "Rohitha", lastName: "Perera", table: 12 },
-{ firstName: "wife", lastName: "Perera", table: 12 },
-{ firstName: "Sujeewa", lastName: "wijesinghe", table: 12 },
-{ firstName: "wife", lastName: "wijesinghe", table: 12 },
-{ firstName: "Neel", lastName: "Liyanaachchi", table: 12 },
-{ firstName: "wife", lastName: "Liyanarchchi", table: 12 },
-{ firstName: "Neel or Sumith", lastName: "Sirisena", table: 12 },
-{ firstName: "Neel", lastName: "Sirisena", table: 12 },
-{ firstName: "Mahesh", lastName: "Weerarathne", table: 13 },
-{ firstName: "Wife", lastName: "Weerarathne", table: 13 },
-{ firstName: "Nalina", lastName: "Dayananda", table: 13 },
-{ firstName: "wife", lastName: "Dayananda", table: 13 },
-{ firstName: "Nishantha", lastName: "Edirisighe", table: 13 },
-{ firstName: "wife", lastName: "Edirisighe", table: 13 },
-{ firstName: "Prasad", lastName: "Ranasighe", table: 13 },
-{ firstName: "wife", lastName: "Ranasighe", table: 13 },
-{ firstName: "Kamal", lastName: "Nishendra", table: 13 },
-{ firstName: "wife", lastName: "Nishendra", table: 13 },
-{ firstName: "Prasad", lastName: "Kariyapperuma", table: 14 },
-{ firstName: "wife", lastName: "Kariyapperuma", table: 14 },
-{ firstName: "Hemantha", lastName: "Abesundara", table: 14 },
-{ firstName: "wife", lastName: "Abesundara", table: 14 },
-{ firstName: "Chandana", lastName: "Rathnayake", table: 14 },
-{ firstName: "wife", lastName: "Rathnayake", table: 14 },
-{ firstName: "Dammika", lastName: "Kumara", table: 14 },
-{ firstName: "wife", lastName: "Kumara", table: 14 },
-{ firstName: "Mahinda", lastName: "Adikari", table: 14 },
-{ firstName: "wife", lastName: "Adikari", table: 14 },
-{ firstName: "Vishmi", lastName: "school", table: 15 },
-{ firstName: "Vishmi", lastName: "university", table: 16 },
-{ firstName: "Vishmi", lastName: "university", table: 17 },
-{ firstName: "Vishmi", lastName: "hospital", table: 18 },
-{ firstName: "Avishi", lastName: "University", table: 19 },
-{ firstName: "Harshana", lastName: "Guest", table: 20 },
-{ firstName: "Harshana", lastName: "Guest", table: 21 },
-{ firstName: "Harshana", lastName: "Guest", table: 22 },
-{ firstName: "Harshana", lastName: "Guest", table: 23 },
-{ firstName: "Harshana", lastName: "Guest", table: 24 },
-{ firstName: "Harshana", lastName: "Guest", table: 25 },
-{ firstName: "Harshana", lastName: "Guest", table: 26 },
-{ firstName: "Harshana", lastName: "Guest", table: 27 },
-{ firstName: "Harshana", lastName: "Guest", table: 28 },
-{ firstName: "Harshana", lastName: "Guest3", table: 29 },
-{ firstName: "Harshana", lastName: "Guest2", table: 30 },
-{ firstName: "Band", lastName: "Doctors 12", table: 31 },
-{ firstName: "Wed Supports", lastName: "Plan Cam Dri", table: 32 },
+            { firstName: "Shiromi", lastName: "Sirithunga", table: 1 },
+            { firstName: "Uditha", lastName: "Sirithunga", table: 1 },
+            { firstName: "Milani", lastName: "Sirithunga", table: 1 },
+            { firstName: "Latha", lastName: "Galappaththi", table: 1 },
+            { firstName: "Ajith", lastName: "Dias", table: 1 },
+            { firstName: "Thilani", lastName: "Dias", table: 1 },
+            { firstName: "Shanthi", lastName: "Galappaththi", table: 1 },
+            { firstName: "Rekha", lastName: "De Silva", table: 1 },
+            { firstName: "Prabath", lastName: "Kasthuriarachchi", table: 1 },
+            { firstName: "Akash", lastName: "Hewapathirana", table: 2 },
+            { firstName: "Kanaki", lastName: "Hewapathirana", table: 2 },
+            { firstName: "Dulshani", lastName: "Rajapaksa", table: 2 },
+            { firstName: "Kavisha", lastName: "Sirithunga", table: 2 },
+            { firstName: "Wagisha", lastName: "Sirithunga", table: 2 },
+            { firstName: "Sadew", lastName: "Dias", table: 2 },
+            { firstName: "Yashith", lastName: "Dias", table: 2 },
+            { firstName: "Kisara", lastName: "Kasthuriarachchi", table: 2 },
+            { firstName: "Gangi", lastName: "Gallappththi", table: 2 },
+            { firstName: "Gangi", lastName: "Husband", table: 2 },
+            { firstName: "Neetaha", lastName: "Jayakodi", table: 3 },
+            { firstName: "Indrananda", lastName: "Weerasena", table: 3 },
+            { firstName: "Kumuduni", lastName: "Damayanthi", table: 3 },
+            { firstName: "Luxman", lastName: "Jeewantha", table: 3 },
+            { firstName: "Chandrika", lastName: "Weliwita", table: 3 },
+            { firstName: "Peshaka", lastName: "Ranganath", table: 3 },
+            { firstName: "wife", lastName: "Ranganath", table: 3 },
+            { firstName: "Lakmali", lastName: "Rangani", table: 3 },
+            { firstName: "Nayanajith", lastName: "Dananjaya", table: 3 },
+            { firstName: "wife", lastName: "Dananjaya", table: 3 },
+            { firstName: "Saranapala", lastName: "Saranapala", table: 3 },
+            { firstName: "Kalhari", lastName: "Fernando", table: 4 },
+            { firstName: "Nipun", lastName: "Kalhari", table: 4 },
+            { firstName: "Gayan", lastName: "Weerasena", table: 4 },
+            { firstName: "Champika", lastName: "weerasena", table: 4 },
+            { firstName: "Ayesha", lastName: "Weerasena", table: 4 },
+            { firstName: "Harsha", lastName: "Viraj", table: 4 },
+            { firstName: "Kavishka", lastName: "Jeewantha", table: 4 },
+            { firstName: "HM", lastName: "Mangalika", table: 4 },
+            { firstName: "Nalin", lastName: "Dissanayake", table: 4 },
+            { firstName: "Achini", lastName: "Pushpakumara", table: 4 },
+            { firstName: "Dayal", lastName: "Pushpakumara", table: 5 },
+            { firstName: "Susanthi", lastName: "Manohari", table: 5 },
+            { firstName: "Malee", lastName: "Kannaggara", table: 5 },
+            { firstName: "Aruna", lastName: "Kannaggara", table: 5 },
+            { firstName: "Shashi", lastName: "Shiwaraj", table: 5 },
+            { firstName: "Shiwa", lastName: "Shiwaraj", table: 5 },
+            { firstName: "Devika", lastName: "Kolambage", table: 5 },
+            { firstName: "Chulan", lastName: "Kotudurage", table: 5 },
+            { firstName: "Ranil", lastName: "Liyanage", table: 5 },
+            { firstName: "Iroshika", lastName: "Liyanage", table: 5 },
+            { firstName: "Anudi", lastName: "Kannaggara", table: 6 },
+            { firstName: "Sajani", lastName: "Kannaggara", table: 6 },
+            { firstName: "Suzan", lastName: "Niweda", table: 6 },
+            { firstName: "Sheron", lastName: "Philip", table: 6 },
+            { firstName: "Washni", lastName: "Michlle", table: 6 },
+            { firstName: "Paminda", lastName: "Thilakarathne", table: 6 },
+            { firstName: "Thushari", lastName: "Amarasinghe", table: 6 },
+            { firstName: "Chandani", lastName: "Welarathne", table: 6 },
+            { firstName: "Yenuli", lastName: "Welarathne", table: 6 },
+            { firstName: "Hasanga", lastName: "De Silva", table: 6 },
+            { firstName: "Wsantha", lastName: "Wickramasinghe", table: 7 },
+            { firstName: "Renu", lastName: "Wickramasinghe", table: 7 },
+            { firstName: "Shashila", lastName: "De Silva", table: 7 },
+            { firstName: "Vidushan", lastName: "Wickramasinghe", table: 7 },
+            { firstName: "Shahan", lastName: "Wickramasinghe", table: 7 },
+            { firstName: "Dilki", lastName: "Perera", table: 7 },
+            { firstName: "Champika", lastName: "Subasinghe", table: 7 },
+            { firstName: "Hansi", lastName: "De Silva", table: 7 },
+            { firstName: "Nilmini", lastName: "Dissanayake", table: 7 },
+            { firstName: "Susantha", lastName: "Rupasinghe", table: 7 },
+            { firstName: "Saji", lastName: "De Silva", table: 8 },
+            { firstName: "Saji Son", lastName: "Siriwardena", table: 8 },
+            { firstName: "Nilanthi", lastName: "Perera", table: 8 },
+            { firstName: "Ajith", lastName: "Perera", table: 8 },
+            { firstName: "Nihal", lastName: "Edward", table: 8 },
+            { firstName: "Seetha", lastName: "Edward", table: 8 },
+            { firstName: "Rohana", lastName: "Gunawardena", table: 8 },
+            { firstName: "Devi", lastName: "Gunawardena", table: 8 },
+            { firstName: "Mahesh", lastName: "Karunarathne", table: 8 },
+            { firstName: "Wasanthi", lastName: "Karunarathne", table: 8 },
+            { firstName: "rohini", lastName: "Kaluarachchi", table: 9 },
+            { firstName: "Sunil", lastName: "Kaluarachchi", table: 9 },
+            { firstName: "Isuri", lastName: "Kaluarachchi", table: 9 },
+            { firstName: "Anula", lastName: "Gunarathne", table: 9 },
+            { firstName: "xxxxxx", lastName: "Gunarathne", table: 9 },
+            { firstName: "Lal", lastName: "Rupasinghe", table: 9 },
+            { firstName: "Maya", lastName: "Rupasinghe", table: 9 },
+            { firstName: "Thusitha", lastName: "Ganegoda", table: 9 },
+            { firstName: "wife", lastName: "Ganegoda", table: 9 },
+            { firstName: "Deepani", lastName: "Dewage", table: 9 },
+            { firstName: "Kamal", lastName: "Gunawardena", table: 10 },
+            { firstName: "Geesara", lastName: "Gunawardena", table: 10 },
+            { firstName: "Priyanwada", lastName: "Karunarathne", table: 10 },
+            { firstName: "Wasundara", lastName: "Karunarathne", table: 10 },
+            { firstName: "Nirosha", lastName: "Rupasinghe", table: 10 },
+            { firstName: "Duwa", lastName: "Gunarathne", table: 10 },
+            { firstName: "Sumudu", lastName: "Senarathne", table: 10 },
+            { firstName: "Upul", lastName: "Jayasinghe", table: 10 },
+            { firstName: "Vijitha USA", lastName: "Perera", table: 10 },
+            { firstName: "wife", lastName: "perera", table: 10 },
+            { firstName: "Jayendra", lastName: "Kuruppu", table: 11 },
+            { firstName: "Dammika", lastName: "Kuruppu", table: 11 },
+            { firstName: "Udeni", lastName: "Adikari", table: 11 },
+            { firstName: "Husband", lastName: "Adikari", table: 11 },
+            { firstName: "dammika", lastName: "Koralage", table: 11 },
+            { firstName: "Luxmi", lastName: "Koralage", table: 11 },
+            { firstName: "Sudath", lastName: "Surendra", table: 11 },
+            { firstName: "wife", lastName: "Surendra", table: 11 },
+            { firstName: "Sudath", lastName: "Withanage", table: 11 },
+            { firstName: "wife", lastName: "Withanage", table: 11 },
+            { firstName: "Shantha", lastName: "Walpala", table: 12 },
+            { firstName: "Chamila", lastName: "Walpala", table: 12 },
+            { firstName: "Rohitha", lastName: "Perera", table: 12 },
+            { firstName: "wife", lastName: "Perera", table: 12 },
+            { firstName: "Sujeewa", lastName: "wijesinghe", table: 12 },
+            { firstName: "wife", lastName: "wijesinghe", table: 12 },
+            { firstName: "Neel", lastName: "Liyanaachchi", table: 12 },
+            { firstName: "wife", lastName: "Liyanarchchi", table: 12 },
+            { firstName: "Neel or Sumith", lastName: "Sirisena", table: 12 },
+            { firstName: "Neel", lastName: "Sirisena", table: 12 },
+            { firstName: "Mahesh", lastName: "Weerarathne", table: 13 },
+            { firstName: "Wife", lastName: "Weerarathne", table: 13 },
+            { firstName: "Nalina", lastName: "Dayananda", table: 13 },
+            { firstName: "wife", lastName: "Dayananda", table: 13 },
+            { firstName: "Nishantha", lastName: "Edirisighe", table: 13 },
+            { firstName: "wife", lastName: "Edirisighe", table: 13 },
+            { firstName: "Prasad", lastName: "Ranasighe", table: 13 },
+            { firstName: "wife", lastName: "Ranasighe", table: 13 },
+            { firstName: "Kamal", lastName: "Nishendra", table: 13 },
+            { firstName: "wife", lastName: "Nishendra", table: 13 },
+            { firstName: "Prasad", lastName: "Kariyapperuma", table: 14 },
+            { firstName: "wife", lastName: "Kariyapperuma", table: 14 },
+            { firstName: "Hemantha", lastName: "Abesundara", table: 14 },
+            { firstName: "wife", lastName: "Abesundara", table: 14 },
+            { firstName: "Chandana", lastName: "Rathnayake", table: 14 },
+            { firstName: "wife", lastName: "Rathnayake", table: 14 },
+            { firstName: "Dammika", lastName: "Kumara", table: 14 },
+            { firstName: "wife", lastName: "Kumara", table: 14 },
+            { firstName: "Mahinda", lastName: "Adikari", table: 14 },
+            { firstName: "wife", lastName: "Adikari", table: 14 },
+            { firstName: "Vishmi", lastName: "school", table: 15 },
+            { firstName: "Vishmi", lastName: "university", table: 16 },
+            { firstName: "Vishmi", lastName: "university", table: 17 },
+            { firstName: "Vishmi", lastName: "hospital", table: 18 },
+            { firstName: "Avishi", lastName: "University", table: 19 },
+            { firstName: "Harshana", lastName: "Guest", table: 20 },
+            { firstName: "Harshana", lastName: "Guest", table: 21 },
+            { firstName: "Harshana", lastName: "Guest", table: 22 },
+            { firstName: "Harshana", lastName: "Guest", table: 23 },
+            { firstName: "Harshana", lastName: "Guest", table: 24 },
+            { firstName: "Harshana", lastName: "Guest", table: 25 },
+            { firstName: "Harshana", lastName: "Guest", table: 26 },
+            { firstName: "Harshana", lastName: "Guest", table: 27 },
+            { firstName: "Harshana", lastName: "Guest", table: 28 },
+            { firstName: "Harshana", lastName: "Guest3", table: 29 },
+            { firstName: "Harshana", lastName: "Guest2", table: 30 },
+            { firstName: "Band", lastName: "Doctors 12", table: 31 },
+            { firstName: "Wed Supports", lastName: "Plan Cam Dri", table: 32 },
+            { firstName: "Additional", lastName: "Guest", table: 33 },
+            { firstName: "Additional", lastName: "Guest", table: 34 }
         ];
 
-        document.addEventListener("DOMContentLoaded", function () {
+        // Create the table layout diagram
+        function createTableLayout() {
+            const container = document.getElementById('tableDiagram');
+            const svgNS = "http://www.w3.org/2000/svg";
+            
+            // Create SVG element
+            const svg = document.createElementNS(svgNS, "svg");
+            svg.setAttribute("width", "100%");
+            svg.setAttribute("height", "500");
+            svg.setAttribute("viewBox", "0 0 700 500");
+            
+            // Calculate circle diameter (1/20 of the viewBox width)
+            const circleDiameter = 700 / 20;
+            const circleRadius = circleDiameter / 2;
+            
+            // Create groups for each row
+            const rows = 5;
+            const rowGap = 30;
+            const colGap = 30;
+            
+            // First 4 rows with 6 tables each and dance floor gap
+            for (let row = 0; row < 4; row++) {
+                for (let col = 0; col < 6; col++) {
+                    // Adjust position for dance floor gap between columns 3 and 4
+                    let xPos = col * (circleDiameter + colGap) + circleRadius + 50;
+                    if (col >= 3) {
+                        xPos += 60; // Extra gap for dance floor
+                    }
+                    
+                    const yPos = row * (circleDiameter + rowGap) + circleRadius + 50;
+                    
+                    // Create circle
+                    const circle = document.createElementNS(svgNS, "circle");
+                    circle.setAttribute("cx", xPos);
+                    circle.setAttribute("cy", yPos);
+                    circle.setAttribute("r", circleRadius);
+                    circle.setAttribute("fill", "#1E90FF");
+                    circle.setAttribute("stroke", "#000");
+                    circle.setAttribute("stroke-width", "2");
+                    circle.setAttribute("class", "table-circle");
+                    circle.setAttribute("data-table", (row * 6 + col + 1));
+                    
+                    // Add hover effect
+                    circle.addEventListener("mouseover", function() {
+                        this.style.fill = "#4169E1";
+                    });
+                    circle.addEventListener("mouseout", function() {
+                        this.style.fill = "#1E90FF";
+                    });
+                    
+                    // Add click event to show guests at table
+                    circle.addEventListener("click", function() {
+                        const tableNum = parseInt(this.getAttribute("data-table"));
+                        showGuestsAtTable(tableNum);
+                    });
+                    
+                    svg.appendChild(circle);
+                    
+                    // Add table number text
+                    const text = document.createElementNS(svgNS, "text");
+                    text.setAttribute("x", xPos);
+                    text.setAttribute("y", yPos + 5);
+                    text.setAttribute("text-anchor", "middle");
+                    text.setAttribute("fill", "white");
+                    text.setAttribute("font-weight", "bold");
+                    text.setAttribute("pointer-events", "none");
+                    text.textContent = (row * 6 + col + 1);
+                    
+                    svg.appendChild(text);
+                }
+            }
+            
+            // Fifth row with 10 tables (no gap)
+            const fifthRowY = 4 * (circleDiameter + rowGap) + circleRadius + 50;
+            for (let col = 0; col < 10; col++) {
+                const xPos = col * (circleDiameter + 15) + circleRadius + 50;
+                
+                // Create circle
+                const circle = document.createElementNS(svgNS, "circle");
+                circle.setAttribute("cx", xPos);
+                circle.setAttribute("cy", fifthRowY);
+                circle.setAttribute("r", circleRadius);
+                circle.setAttribute("fill", "#1E90FF");
+                circle.setAttribute("stroke", "#000");
+                circle.setAttribute("stroke-width", "2");
+                circle.setAttribute("class", "table-circle");
+                circle.setAttribute("data-table", (24 + col + 1));
+                
+                // Add hover effect
+                circle.addEventListener("mouseover", function() {
+                    this.style.fill = "#4169E1";
+                });
+                circle.addEventListener("mouseout", function() {
+                    this.style.fill = "#1E90FF";
+                });
+                
+                // Add click event to show guests at table
+                circle.addEventListener("click", function() {
+                    const tableNum = parseInt(this.getAttribute("data-table"));
+                    showGuestsAtTable(tableNum);
+                });
+                
+                svg.appendChild(circle);
+                
+                // Add table number text
+                const text = document.createElementNS(svgNS, "text");
+                text.setAttribute("x", xPos);
+                text.setAttribute("y", fifthRowY + 5);
+                text.setAttribute("text-anchor", "middle");
+                text.setAttribute("fill", "white");
+                text.setAttribute("font-weight", "bold");
+                text.setAttribute("pointer-events", "none");
+                text.textContent = (24 + col + 1);
+                
+                svg.appendChild(text);
+            }
+            
+            // Add dance floor area
+            const danceFloor = document.createElementNS(svgNS, "rect");
+            danceFloor.setAttribute("x", 3 * (circleDiameter + colGap) + circleDiameter + 50 + 5);
+            danceFloor.setAttribute("y", 50 - circleRadius);
+            danceFloor.setAttribute("width", 60);
+            danceFloor.setAttribute("height", 4 * (circleDiameter + rowGap) + circleDiameter);
+            danceFloor.setAttribute("class", "dance-floor");
+            danceFloor.setAttribute("rx", "10");
+            
+            svg.appendChild(danceFloor);
+            
+            // Add dance floor label
+            const danceLabel = document.createElementNS(svgNS, "text");
+            danceLabel.setAttribute("x", 3 * (circleDiameter + colGap) + circleDiameter + 50 + 35);
+            danceLabel.setAttribute("y", 4 * (circleDiameter + rowGap) + circleDiameter + 40);
+            danceLabel.setAttribute("text-anchor", "middle");
+            danceLabel.setAttribute("class", "dance-floor-label");
+            danceLabel.setAttribute("transform", "rotate(90, " + (3 * (circleDiameter + colGap) + circleDiameter + 50 + 35) + ", " + (4 * (circleDiameter + rowGap) + circleDiameter + 40) + ")");
+            danceLabel.textContent = "Dance Floor";
+            
+            svg.appendChild(danceLabel);
+            
+            // Add to container
+            container.appendChild(svg);
+        }
+        
+        // Show guests at a specific table
+        function showGuestsAtTable(tableNum) {
+            const resultsDiv = document.getElementById('results');
+            const tableGuests = guests.filter(guest => guest.table === tableNum);
+            
+            // Remove any previous highlights
+            document.querySelectorAll('.table-circle').forEach(circle => {
+                circle.classList.remove('highlighted');
+            });
+            
+            // Highlight the selected table
+            const tableCircle = document.querySelector(`.table-circle[data-table="${tableNum}"]`);
+            if (tableCircle) {
+                tableCircle.classList.add('highlighted');
+            }
+            
+            if (tableGuests.length === 0) {
+                resultsDiv.innerHTML = `<p>No guests found at Table ${tableNum}.</p>`;
+                return;
+            }
+            
+            let html = `<h3>Guests at Table ${tableNum}</h3><ul>`;
+            tableGuests.forEach(guest => {
+                html += `<li>${guest.firstName} ${guest.lastName}</li>`;
+            });
+            html += '</ul>';
+            
+            resultsDiv.innerHTML = html;
+        }
+        
+        // Initialize when page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            // Create the table layout
+            createTableLayout();
+            
+            // Find table button functionality
             const button = document.getElementById("findTableBtn");
-            button.addEventListener("click", function () {
+            button.addEventListener("click", function() {
                 const input = document.getElementById("firstNameInput").value.trim().toLowerCase();
                 const resultsDiv = document.getElementById("results");
                 resultsDiv.innerHTML = "";
-
+                
+                // Remove any previous highlights
+                document.querySelectorAll('.table-circle').forEach(circle => {
+                    circle.classList.remove('highlighted');
+                });
+                
                 if (!input) {
                     resultsDiv.textContent = "Please enter your first name.";
                     return;
                 }
-
+                
                 const matches = guests.filter(guest => guest.firstName.toLowerCase() === input);
-
+                
                 if (matches.length === 0) {
                     resultsDiv.textContent = "No guest found with that first name.";
                 } else {
@@ -285,18 +567,32 @@ h2 {
                     matches.forEach(guest => {
                         const item = document.createElement("li");
                         item.textContent = `${guest.firstName} ${guest.lastName} - Table ${guest.table}`;
+                        
+                        // Add click to show table functionality
+                        item.style.cursor = "pointer";
+                        item.style.color = "#1a73e8";
+                        item.addEventListener("click", function() {
+                            showGuestsAtTable(guest.table);
+                        });
+                        
                         list.appendChild(item);
                     });
                     resultsDiv.appendChild(list);
                 }
             });
+            
+            // Car park button functionality
+            document.getElementById("findCarParkBtn").addEventListener("click", function() {
+                window.open("https://maps.app.goo.gl/rW5yMQzisJt6ZzSM8", "_blank");
+            });
+            
+            // Allow pressing Enter in the input field
+            document.getElementById("firstNameInput").addEventListener("keypress", function(e) {
+                if (e.key === "Enter") {
+                    document.getElementById("findTableBtn").click();
+                }
+            });
         });
     </script>
-    <script>
-    document.getElementById("findCarParkBtn").addEventListener("click", function () {
-        // Replace this URL with the actual car park location link
-        window.open("https://maps.app.goo.gl/rW5yMQzisJt6ZzSM8", "_blank");
-    });
-</script>
 </body>
 </html>
