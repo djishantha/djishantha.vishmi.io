@@ -95,6 +95,10 @@
   font-weight: bold;
   font-size: 12px;  /* smaller font */
 }
+       .circle.selected {
+  border: 2px solid yellow;
+}
+ 
 
     </style>
 </head>
@@ -341,6 +345,10 @@ const tableMap = {
                 container.appendChild(circle);
             }
         }
+        .circle.selected {
+  border: 2px solid yellow;
+}
+
         let editingMode = true; // set false for normal visitors
 let selectedCircle = null;
 
