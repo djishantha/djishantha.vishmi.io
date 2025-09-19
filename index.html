@@ -341,6 +341,15 @@ const tableMap = {
                 container.appendChild(circle);
             }
         }
+        // Move tables 28, 29, 30 a little up
+const allCircles = container.querySelectorAll(".circle");
+allCircles.forEach(circle => {
+  if (circle.textContent === "28" || circle.textContent === "29" || circle.textContent === "30") {
+    let currentTop = parseInt(circle.style.top);
+    circle.style.top = (currentTop - 15) + "px"; // move 15px up
+  }
+});
+
     </script>
 
     <script>
