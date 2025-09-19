@@ -308,6 +308,9 @@
 
     <!-- NEW SCRIPT for drawing circles -->
     <script>
+        // Mapping: original number → new label
+
+
         const rows = 5;
         const cols = 9;
         const gapX = 50;  // half the horizontal gap
@@ -318,13 +321,22 @@
 
         let tableNumber = 1;
         const container = document.getElementById("circlesContainer");
-
+        
+const tableMap = {
+  4: "33",     // Change 4 → 33
+  5: "VIP",    // Example: 5 → VIP
+  6: "★",      // Example: 6 → star
+  10: "Bride"  // Example: 10 → Bride
+};
         for (let row = 1; row <= rows; row++) {
             for (let col = 1; col <= cols; col++) {
                 if (row < 5 && (col === 4 || col === 5 || col === 6)) continue;
                 const circle = document.createElement("div");
                 circle.classList.add("circle");
-                circle.textContent = tableNumber++;
+               let label = tableMap[tableNumber] || tableNumber;
+                circle.textContent = label;
+                tableNumber++;
+
                 circle.style.left = (offsetX + (col - 1) * gapX) + "px";
                 circle.style.top = (offsetY + (row - 1) * gapY) + "px";
                 container.appendChild(circle);
