@@ -1,222 +1,121 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harshana & Vishmi Wedding</title>
+    <h1 class="main-welcome">WELCOME !</h1>
+    <h2>Harshana & Vishmi Wedding</h2>
+    <h3 class="hotel-name">JETWING BLUE - NEGOMBO</h3>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: linear-gradient(135deg, #87CEEB, #6baed6);
+            font-family: sans-serif;
+            background-color: #87CEEB;
             text-align: center;
             padding: 0;
             margin: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            box-sizing: border-box;
         }
-        
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            z-index: -1;
-        }
-        
-        .header {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 800px;
-        }
-        
         .main-welcome {
-            font-size: 48px;
-            color: #1a73e8;
-            font-family: 'Brush Script MT', cursive;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 64px;
+            color: blue;
+            font-family: 'Cursive', 'Brush Script MT', sans-serif;
+            margin-bottom: 10px;
         }
-
-        h2 {
-            font-size: 28px;
-            margin: 10px 0;
-            color: #333;
-        }
-        
+        h2 { font-size: 32px; margin: 10px 0; }
         .hotel-name {
-            font-size: 18px;
-            color: #0b8043;
-            font-family: Georgia, serif;
+            font-size: 16px;
+            color: green;
+            font-family: 'Georgia', 'Times New Roman', serif;
             margin-top: 5px;
-            font-weight: bold;
         }
-        
         .container {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: white;
             padding: 30px;
-            border-radius: 15px;
-            margin: 0 auto 30px;
-            max-width: 800px;
+            border-radius: 10px;
+            margin: 0 auto;
+            max-width: 500px;
             width: 90%;
             box-sizing: border-box;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        
-        .input-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
         input {
-            padding: 12px 15px;
+            padding: 10px;
             font-size: 16px;
-            margin: 10px 0;
-            width: 250px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            transition: border-color 0.3s;
+            margin: 10px 5px;
         }
-        
-        input:focus {
-            border-color: #4d90fe;
-            outline: none;
-        }
-
         button {
-            padding: 12px 20px;
+            padding: 10px 15px;
             font-size: 16px;
             cursor: pointer;
-            background-color: #1a73e8;
+            background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 8px;
-            margin: 10px 5px;
-            transition: all 0.3s;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
         }
-
-        button:hover {
-            background-color: #0d62c9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
+        button:hover { background-color: #0056b3; }
         #findCarParkBtn {
-            background-color: #0b8043;
             margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
         }
-
-        #findCarParkBtn:hover {
-            background-color: #0a6b38;
-        }
-
+        #findCarParkBtn:hover { background-color: #1e7e34; }
         #results {
             margin-top: 20px;
             font-size: 18px;
             color: #333;
-            min-height: 50px;
         }
-        
-        .table-diagram {
-            margin: 30px auto;
-            width: 100%;
-            max-width: 700px;
-            border: 2px solid #ddd;
+
+        /* NEW CSS for seating plan overlay */
+        .layout-container {
+            position: relative;
+            display: inline-block;
+        }
+        .venue-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
             border-radius: 10px;
-            padding: 20px;
-            background-color: rgba(249, 249, 249, 0.9);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        
-        .dance-floor {
-            fill: #FFD700;
-            stroke: #DAA520;
-            stroke-width: 2;
-            opacity: 0.8;
-        }
-        
-        .dance-floor-label {
-            font-size: 14px;
+        .circle {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             font-weight: bold;
-            fill: #8B4513;
-        }
-        
-        .instructions {
-            margin-top: 15px;
-            font-style: italic;
-            color: #666;
-        }
-        
-        .table-circle {
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .table-circle:hover {
-            filter: brightness(1.2);
-            transform: scale(1.05);
-        }
-        
-        .highlighted {
-            filter: brightness(1.3);
-            stroke: #ff6600;
-            stroke-width: 3;
-        }
-        
-        .footer {
-            margin-top: 20px;
-            color: #666;
-            font-size: 14px;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1 class="main-welcome">WELCOME !</h1>
-        <h2>Harshana & Vishmi Wedding</h2>
-        <h3 class="hotel-name">JETWING BLUE - NEGOMBO</h3>
-    </div>
-    
     <div class="container">
         <h1>Find Your Table</h1>
-        <div class="input-section">
-            <input type="text" id="firstNameInput" placeholder="Enter your first name">
-            <button id="findTableBtn">Find My Table</button>
-        </div>
+        <input type="text" id="firstNameInput" placeholder="Enter your first name">
+        <button id="findTableBtn">Table Number</button>
         <div id="results"></div>
-        
-        <div class="table-diagram" id="tableDiagram">
-            <!-- SVG table layout will be inserted here by JavaScript -->
+
+        <!-- WRAPPER for image + circles -->
+        <div class="layout-container">
+            <img src="Jetwing Blue.jpg" alt="Wedding Table Plan" class="venue-img">
+            <div id="circlesContainer"></div>
         </div>
-        
-        <p class="instructions">Click on any table number to see who's seated there</p>
-        
+
         <button id="findCarParkBtn">Find Your Car Park</button>
     </div>
 
-    <div class="footer">
-        We look forward to celebrating with you!
-    </div>
-
+    <!-- Your existing guest search script stays unchanged -->
     <script>
-        // Guest data
-        const guests = [
+      const guests = [
             { firstName: "Shiromi", lastName: "Sirithunga", table: 1 },
             { firstName: "Uditha", lastName: "Sirithunga", table: 1 },
             { firstName: "Milani", lastName: "Sirithunga", table: 1 },
@@ -379,215 +278,18 @@
             { firstName: "Additional", lastName: "Guest", table: 34 }
         ];
 
-        // Create the table layout diagram
-        function createTableLayout() {
-            const container = document.getElementById('tableDiagram');
-            const svgNS = "http://www.w3.org/2000/svg";
-            
-            // Create SVG element
-            const svg = document.createElementNS(svgNS, "svg");
-            svg.setAttribute("width", "100%");
-            svg.setAttribute("height", "500");
-            svg.setAttribute("viewBox", "0 0 700 500");
-            
-            // Calculate circle diameter (1/20 of the viewBox width)
-            const circleDiameter = 700 / 20;
-            const circleRadius = circleDiameter / 2;
-            
-            // Create groups for each row
-            const rows = 5;
-            const rowGap = 30;
-            const colGap = 30;
-            
-            // First 4 rows with 6 tables each and dance floor gap
-            let tableNumber = 1;
-            for (let row = 0; row < 4; row++) {
-                for (let col = 0; col < 6; col++) {
-                    // Skip positions for tables 4, 10, 16, 22
-                    if ((row === 0 && col === 3) || (row === 1 && col === 3) || 
-                        (row === 2 && col === 3) || (row === 3 && col === 3)) {
-                        tableNumber++;
-                        continue;
-                    }
-                    
-                    // Adjust position for dance floor gap between columns 3 and 4
-                    let xPos = col * (circleDiameter + colGap) + circleRadius + 50;
-                    if (col >= 3) {
-                        xPos += 100; // Extra gap for wider dance floor
-                    }
-                    
-                    const yPos = row * (circleDiameter + rowGap) + circleRadius + 50;
-                    
-                    // Create circle
-                    const circle = document.createElementNS(svgNS, "circle");
-                    circle.setAttribute("cx", xPos);
-                    circle.setAttribute("cy", yPos);
-                    circle.setAttribute("r", circleRadius);
-                    circle.setAttribute("fill", "#1E90FF");
-                    circle.setAttribute("stroke", "#000");
-                    circle.setAttribute("stroke-width", "2");
-                    circle.setAttribute("class", "table-circle");
-                    circle.setAttribute("data-table", tableNumber);
-                    
-                    // Add hover effect
-                    circle.addEventListener("mouseover", function() {
-                        this.style.fill = "#4169E1";
-                    });
-                    circle.addEventListener("mouseout", function() {
-                        this.style.fill = "#1E90FF";
-                    });
-                    
-                    // Add click event to show guests at table
-                    circle.addEventListener("click", function() {
-                        const tableNum = parseInt(this.getAttribute("data-table"));
-                        showGuestsAtTable(tableNum);
-                    });
-                    
-                    svg.appendChild(circle);
-                    
-                    // Add table number text
-                    const text = document.createElementNS(svgNS, "text");
-                    text.setAttribute("x", xPos);
-                    text.setAttribute("y", yPos + 5);
-                    text.setAttribute("text-anchor", "middle");
-                    text.setAttribute("fill", "white");
-                    text.setAttribute("font-weight", "bold");
-                    text.setAttribute("pointer-events", "none");
-                    text.textContent = tableNumber;
-                    
-                    svg.appendChild(text);
-                    
-                    tableNumber++;
-                }
-            }
-            
-            // Fifth row with 10 tables (no gap)
-            const fifthRowY = 4 * (circleDiameter + rowGap) + circleRadius + 50;
-            for (let col = 0; col < 10; col++) {
-                const xPos = col * (circleDiameter + 15) + circleRadius + 50;
-                
-                // Create circle
-                const circle = document.createElementNS(svgNS, "circle");
-                circle.setAttribute("cx", xPos);
-                circle.setAttribute("cy", fifthRowY);
-                circle.setAttribute("r", circleRadius);
-                circle.setAttribute("fill", "#1E90FF");
-                circle.setAttribute("stroke", "#000");
-                circle.setAttribute("stroke-width", "2");
-                circle.setAttribute("class", "table-circle");
-                circle.setAttribute("data-table", tableNumber);
-                
-                // Add hover effect
-                circle.addEventListener("mouseover", function() {
-                    this.style.fill = "#4169E1";
-                });
-                circle.addEventListener("mouseout", function() {
-                    this.style.fill = "#1E90FF";
-                });
-                
-                // Add click event to show guests at table
-                circle.addEventListener("click", function() {
-                    const tableNum = parseInt(this.getAttribute("data-table"));
-                    showGuestsAtTable(tableNum);
-                });
-                
-                svg.appendChild(circle);
-                
-                // Add table number text
-                const text = document.createElementNS(svgNS, "text");
-                text.setAttribute("x", xPos);
-                text.setAttribute("y", fifthRowY + 5);
-                text.setAttribute("text-anchor", "middle");
-                text.setAttribute("fill", "white");
-                text.setAttribute("font-weight", "bold");
-                text.setAttribute("pointer-events", "none");
-                text.textContent = tableNumber;
-                
-                svg.appendChild(text);
-                
-                tableNumber++;
-            }
-            
-            // Add dance floor area (double wide, half length)
-            const danceFloor = document.createElementNS(svgNS, "rect");
-            danceFloor.setAttribute("x", 3 * (circleDiameter + colGap) + circleDiameter + 50 + 5);
-            danceFloor.setAttribute("y", 50 - circleRadius + 100); // Start lower for half length
-            danceFloor.setAttribute("width", 120); // Double width
-            danceFloor.setAttribute("height", 2 * (circleDiameter + rowGap) + circleDiameter - 100); // Half height
-            danceFloor.setAttribute("class", "dance-floor");
-            danceFloor.setAttribute("rx", "10");
-            
-            svg.appendChild(danceFloor);
-            
-            // Add dance floor label
-            const danceLabel = document.createElementNS(svgNS, "text");
-            danceLabel.setAttribute("x", 3 * (circleDiameter + colGap) + circleDiameter + 50 + 65);
-            danceLabel.setAttribute("y", 2 * (circleDiameter + rowGap) + circleDiameter + 50);
-            danceLabel.setAttribute("text-anchor", "middle");
-            danceLabel.setAttribute("class", "dance-floor-label");
-            danceLabel.setAttribute("transform", "rotate(90, " + (3 * (circleDiameter + colGap) + circleDiameter + 50 + 65) + ", " + (2 * (circleDiameter + rowGap) + circleDiameter + 50) + ")");
-            danceLabel.textContent = "Dance Floor";
-            
-            svg.appendChild(danceLabel);
-            
-            // Add to container
-            container.appendChild(svg);
-        }
-        
-        // Show guests at a specific table
-        function showGuestsAtTable(tableNum) {
-            const resultsDiv = document.getElementById('results');
-            const tableGuests = guests.filter(guest => guest.table === tableNum);
-            
-            // Remove any previous highlights
-            document.querySelectorAll('.table-circle').forEach(circle => {
-                circle.classList.remove('highlighted');
-            });
-            
-            // Highlight the selected table
-            const tableCircle = document.querySelector(`.table-circle[data-table="${tableNum}"]`);
-            if (tableCircle) {
-                tableCircle.classList.add('highlighted');
-            }
-            
-            if (tableGuests.length === 0) {
-                resultsDiv.innerHTML = `<p>No guests found at Table ${tableNum}.</p>`;
-                return;
-            }
-            
-            let html = `<h3>Guests at Table ${tableNum}</h3><ul>`;
-            tableGuests.forEach(guest => {
-                html += `<li>${guest.firstName} ${guest.lastName}</li>`;
-            });
-            html += '</ul>';
-            
-            resultsDiv.innerHTML = html;
-        }
-        
-        // Initialize when page loads
-        document.addEventListener("DOMContentLoaded", function() {
-            // Create the table layout
-            createTableLayout();
-            
-            // Find table button functionality
+
+        document.addEventListener("DOMContentLoaded", function () {
             const button = document.getElementById("findTableBtn");
-            button.addEventListener("click", function() {
+            button.addEventListener("click", function () {
                 const input = document.getElementById("firstNameInput").value.trim().toLowerCase();
                 const resultsDiv = document.getElementById("results");
                 resultsDiv.innerHTML = "";
-                
-                // Remove any previous highlights
-                document.querySelectorAll('.table-circle').forEach(circle => {
-                    circle.classList.remove('highlighted');
-                });
-                
                 if (!input) {
                     resultsDiv.textContent = "Please enter your first name.";
                     return;
                 }
-                
                 const matches = guests.filter(guest => guest.firstName.toLowerCase() === input);
-                
                 if (matches.length === 0) {
                     resultsDiv.textContent = "No guest found with that first name.";
                 } else {
@@ -595,22 +297,41 @@
                     matches.forEach(guest => {
                         const item = document.createElement("li");
                         item.textContent = `${guest.firstName} ${guest.lastName} - Table ${guest.table}`;
-                        
-                        // Add click to show table functionality
-                        item.style.cursor = "pointer";
-                        item.style.color = "#1a73e8";
-                        item.addEventListener("click", function() {
-                            showGuestsAtTable(guest.table);
-                        });
-                        
                         list.appendChild(item);
                     });
                     resultsDiv.appendChild(list);
                 }
             });
-            
-            // Car park button functionality
-            document.getElementById("findCarParkBtn").addEventListener("click", function() {
+        });
+    </script>
+
+    <!-- NEW SCRIPT for drawing circles -->
+    <script>
+        const rows = 5;
+        const cols = 9;
+        const gapX = 70;
+        const gapY = 70;
+        const offsetX = 40;
+        const offsetY = 40;
+
+        let tableNumber = 1;
+        const container = document.getElementById("circlesContainer");
+
+        for (let row = 1; row <= rows; row++) {
+            for (let col = 1; col <= cols; col++) {
+                if (row < 5 && (col === 4 || col === 5 || col === 6)) continue;
+                const circle = document.createElement("div");
+                circle.classList.add("circle");
+                circle.textContent = tableNumber++;
+                circle.style.left = (offsetX + (col - 1) * gapX) + "px";
+                circle.style.top = (offsetY + (row - 1) * gapY) + "px";
+                container.appendChild(circle);
+            }
+        }
+    </script>
+
+    <script>
+        document.getElementById("findCarParkBtn").addEventListener("click", function() {
                 window.open("https://maps.app.goo.gl/rW5yMQzisJt6ZzSM8", "_blank");
             });
             
@@ -619,8 +340,8 @@
                 if (e.key === "Enter") {
                     document.getElementById("findTableBtn").click();
                 }
-            });
         });
     </script>
 </body>
 </html>
+
