@@ -323,10 +323,9 @@
         const container = document.getElementById("circlesContainer");
         
 const tableMap = {
-  4: "33",     // Change 4 → 33
-  5: "VIP",    // Example: 5 → VIP
-  6: "★",      // Example: 6 → star
-  10: "Bride"  // Example: 10 → Bride
+  22: "BAND",     // Change 4 → 33
+  33: "Help",    // Example: 5 → VIP
+  32: "22"  // Example: 10 → Bride
 };
         for (let row = 1; row <= rows; row++) {
             for (let col = 1; col <= cols; col++) {
@@ -337,8 +336,8 @@ const tableMap = {
                 circle.textContent = label;
                 tableNumber++;
 
-                circle.style.left = (offsetX + (col - 1) * gapX) + "px";
-                circle.style.top = (offsetY + (row - 1) * gapY) + "px";
+                circle.style.left = (offsetX + (col - 1) * gapX-10) + "px";
+                circle.style.top = (offsetY + (row - 1) * gapY-10) + "px";
                 container.appendChild(circle);
             }
         }
