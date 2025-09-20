@@ -386,15 +386,7 @@ circle.style.top  = topPercent + "%";
     //circle.style.top = (currentTop - 0) + "px"; // move 15px up
   //}
 //});
-         // 🔹 Load saved positions from localStorage
-const savedPositions = JSON.parse(localStorage.getItem("circlePositions") || "{}");
-allCircles.forEach(c => {
-    if (savedPositions[c.textContent]) {
-        c.style.left = savedPositions[c.textContent].left;
-        c.style.top  = savedPositions[c.textContent].top;
-    }
-});
-
+      
         let editingMode = true; // set false for normal visitors
 let selectedCircle = null;
 
