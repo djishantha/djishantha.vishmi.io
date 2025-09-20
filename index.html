@@ -410,15 +410,16 @@ document.addEventListener("keydown", (e) => {
     case "ArrowRight": selectedCircle.style.left = (left + 5) + "px"; break;
   }
 });
-         // 🔹 Save all circle positions to localStorage
-const positions = {};
-document.querySelectorAll(".circle").forEach(c => {
-    positions[c.textContent] = { left: c.style.left, top: c.style.top };
-});
-localStorage.setItem("circlePositions", JSON.stringify(positions));
-
-
+        
     </script>
+    function exportPositions() {
+    const positions = {};
+    document.querySelectorAll(".circle").forEach(c => {
+        positions[c.textContent] = { left: c.style.left, top: c.style.top };
+    });
+    console.log(JSON.stringify(positions, null, 2));
+}
+
     <script>
     document.getElementById("findCarParkBtn").addEventListener("click", function () {
         // Replace this URL with the actual car park location link
