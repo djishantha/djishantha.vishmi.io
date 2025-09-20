@@ -310,6 +310,18 @@ h2 {
                         const item = document.createElement("li");
                         item.textContent = `${guest.firstName} ${guest.lastName} - Table ${guest.table}`;
                         list.appendChild(item);
+                         // 🔹 RESET all circles to blue
+                const circles = document.querySelectorAll(".circle");
+                circles.forEach(circle => {
+                    circle.style.backgroundColor = "blue";
+                });
+
+                // 🔹 HIGHLIGHT the matching circle in green
+                circles.forEach(circle => {
+                    if (circle.textContent == guest.table) {
+                        circle.style.backgroundColor = "green";
+                    }
+                });
                     });
                     resultsDiv.appendChild(list);
                 }
