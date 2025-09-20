@@ -92,10 +92,10 @@ h2 {
             display: block;
             border-radius: 10px;
         }
-    .circle {
+ .circle {
   position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 5%;   /* relative size instead of fixed 25px */
+  aspect-ratio: 1/1;  /* keeps it round */
   background-color: blue;
   border-radius: 50%;
   display: flex;
@@ -103,9 +103,9 @@ h2 {
   justify-content: center;
   color: white;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 0.8em;
+  transform: translate(-50%, -50%); /* center on the % position */
 }
-
 .circle.selected {
   border: 2px solid yellow;
 }
@@ -367,8 +367,12 @@ const tableMap = {
                 circle.textContent = label;
                 tableNumber++;
 
-                circle.style.left = (offsetX + (col - 1) * gapX-30) + "px";
-                circle.style.top = (offsetY + (row - 1) * gapY-20) + "px";
+                // Calculate positions as percentages (so they scale with image)
+let leftPercent = ((col - 1) / (cols - 1)) * 100;
+let topPercent  = ((row - 1) / (rows - 1)) * 100;
+
+circle.style.left = leftPercent + "%";
+circle.style.top  = topPercent + "%";
                 container.appendChild(circle);
             }
         }
