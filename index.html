@@ -310,18 +310,19 @@ h2 {
                         const item = document.createElement("li");
                         item.textContent = `${guest.firstName} ${guest.lastName} - Table ${guest.table}`;
                         list.appendChild(item);
-                         // 🔹 RESET all circles to blue
-                const circles = document.querySelectorAll(".circle");
-                circles.forEach(circle => {
-                    circle.style.backgroundColor = "blue";
-                });
+                       // RESET all circles to blue and stop blinking
+const circles = document.querySelectorAll(".circle");
+circles.forEach(circle => {
+    circle.style.backgroundColor = "blue";
+    circle.classList.remove("blink");
+});
 
-                // 🔹 HIGHLIGHT the matching circle in green
-                circles.forEach(circle => {
-                    if (circle.textContent == guest.table) {
-                        circle.style.backgroundColor = "green";
-                    }
-                });
+// HIGHLIGHT and make blink
+circles.forEach(circle => {
+    if (circle.textContent == guest.table) {
+        circle.classList.add("blink");
+    }
+});
                     });
                     resultsDiv.appendChild(list);
                 }
