@@ -109,6 +109,15 @@ h2 {
 .circle.selected {
   border: 2px solid yellow;
 }
+@keyframes blinkGreen {
+  0%   { background-color: green; }
+  50%  { background-color: blue; }
+  100% { background-color: green; }
+}
+
+.circle.blink {
+  animation: blinkGreen 1s infinite;
+}
 
     </style>
 </head>
