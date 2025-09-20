@@ -94,7 +94,7 @@ h2 {
         }
  .circle {
   position: absolute;
-  width: 5%;   /* relative size instead of fixed 25px */
+  width: 8%;   /* relative size instead of fixed 25px */
   aspect-ratio: 1/1;  /* keeps it round */
   background-color: blue;
   border-radius: 50%;
@@ -109,14 +109,15 @@ h2 {
 .circle.selected {
   border: 2px solid yellow;
 }
-@keyframes blinkGreen {
-  0%   { background-color: green; }
-  50%  { background-color: blue; }
-  100% { background-color: green; }
+@keyframes blinkColors {
+  0%   { background-color: blue; }
+  33%  { background-color: #00FF00; }  /* bright green */
+  66%  { background-color: #FFFF00; }  /* bright yellow */
+  100% { background-color: blue; }
 }
 
 .circle.blink {
-  animation: blinkGreen 1s infinite;
+  animation: blinkColors 1.5s infinite;  /* adjust speed as needed */
 }
 
     </style>
