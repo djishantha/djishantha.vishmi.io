@@ -378,14 +378,47 @@ circle.style.top  = topPercent + "%";
                 container.appendChild(circle);
             }
         }
-        // Move tables 28, 29, 30 a little up
-//const allCircles = container.querySelectorAll(".circle");
-//allCircles.forEach(circle => {
- // if (circle.textContent === "28" || circle.textContent === "29" || circle.textContent === "30") {
-   // let currentTop = parseInt(circle.style.top);
-    //circle.style.top = (currentTop - 0) + "px"; // move 15px up
-  //}
-//});
+        // Move tables up and left
+const allCircles = container.querySelectorAll(".circle");
+
+allCircles.forEach(circle => {
+  switch(circle.textContent) {
+    case "1":
+      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";  // adjust up/down
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%"; // adjust left/right
+      break;
+    case "2":
+      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      break;
+    case "3":
+      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      break;
+    // …
+    case "28":
+      circle.style.top  = (parseFloat(circle.style.top) - 2) + "%"; // moved up
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      break;
+    case "29":
+      circle.style.top  = (parseFloat(circle.style.top) - 2) + "%";
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      break;
+    case "30":
+      circle.style.top  = (parseFloat(circle.style.top) - 2) + "%";
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      break;
+    case "BAND":
+      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      break;
+    case "Help":
+      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      break;
+  }
+});
+
       
         let editingMode = true; // set false for normal visitors
 let selectedCircle = null;
