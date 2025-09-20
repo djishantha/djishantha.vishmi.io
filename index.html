@@ -82,14 +82,34 @@ h2 {
             font-size: 18px;
             color: #333;
         }
-        .table-plan {
-    margin-top: 30px;
-    max-width: 100%;
-    height: auto;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      .layout-container {
+            position: relative;
+            display: inline-block;
+        }
+        .venue-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+    .circle {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: blue;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
 }
+
+.circle.selected {
+  border: 2px solid yellow;
+}
+
     </style>
 </head>
 <body>
@@ -98,7 +118,11 @@ h2 {
         <input type="text" id="firstNameInput" placeholder="Enter your first name">
         <button id="findTableBtn">Table Number</button>
         <div id="results"></div>
-        <img src="Jetwing Blue.jpg" alt="Wedding Table Plan" class="table-plan">
+         <div class="layout-container">
+            <img src="Jetwing Blue.jpg" alt="Wedding Table Plan" class="venue-img">
+            <div id="circlesContainer"></div>
+        </div>
+
         <button id="findCarParkBtn">Find Your Car Park</button>
     </div>
 
@@ -291,6 +315,73 @@ h2 {
                 }
             });
         });
+    </script>
+     <script>
+        // Mapping: original number → new label
+
+
+        const rows = 5;
+        const cols = 9;
+        const gapX = 50;  // half the horizontal gap
+        const gapY = 59;  // half the vertical gap
+
+        const offsetX = 40;
+        const offsetY = 40;
+
+        let tableNumber = 1;
+        const container = document.getElementById("circlesContainer");
+        
+const tableMap = {
+  22: "BAND",     // Change 4 → 33
+  33: "Help",    // Example: 5 → VIP
+  32: "22"  // Example: 10 → Bride
+};
+        for (let row = 1; row <= rows; row++) {
+            for (let col = 1; col <= cols; col++) {
+                if (row < 5 && (col === 4 || col === 5 || col === 6)) continue;
+                const circle = document.createElement("div");
+                circle.classList.add("circle");
+               let label = tableMap[tableNumber] || tableNumber;
+                circle.textContent = label;
+                tableNumber++;
+
+                circle.style.left = (offsetX + (col - 1) * gapX-30) + "px";
+                circle.style.top = (offsetY + (row - 1) * gapY-20) + "px";
+                container.appendChild(circle);
+            }
+        }
+        // Move tables 28, 29, 30 a little up
+const allCircles = container.querySelectorAll(".circle");
+allCircles.forEach(circle => {
+  if (circle.textContent === "28" || circle.textContent === "29" || circle.textContent === "30") {
+    let currentTop = parseInt(circle.style.top);
+    circle.style.top = (currentTop - 15) + "px"; // move 15px up
+  }
+});
+        let editingMode = true; // set false for normal visitors
+let selectedCircle = null;
+
+container.querySelectorAll(".circle").forEach(circle => {
+  circle.addEventListener("click", () => {
+    if(!editingMode) return;
+    if (selectedCircle) selectedCircle.classList.remove("selected");
+    selectedCircle = circle;
+    selectedCircle.classList.add("selected");
+  });
+});
+
+document.addEventListener("keydown", (e) => {
+  if (!editingMode || !selectedCircle) return;
+  let top = parseInt(selectedCircle.style.top);
+  let left = parseInt(selectedCircle.style.left);
+  switch(e.key) {
+    case "ArrowUp": selectedCircle.style.top = (top - 5) + "px"; break;
+    case "ArrowDown": selectedCircle.style.top = (top + 5) + "px"; break;
+    case "ArrowLeft": selectedCircle.style.left = (left - 5) + "px"; break;
+    case "ArrowRight": selectedCircle.style.left = (left + 5) + "px"; break;
+  }
+});
+
     </script>
     <script>
     document.getElementById("findCarParkBtn").addEventListener("click", function () {
