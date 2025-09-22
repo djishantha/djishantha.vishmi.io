@@ -92,7 +92,6 @@ h2 {
             display: block;
             border-radius: 10px;
         }
-     
  .circle {
   position: absolute;
   width: 8%;   /* relative size instead of fixed 25px */
@@ -362,9 +361,9 @@ const tableMap = {
 };
         for (let row = 1; row <= rows; row++) {
             for (let col = 1; col <= cols; col++) {
-               if (row < 5 && (col === 4 || col === 5 || col === 6)) continue;
+                if (row < 5 && (col === 4 || col === 5 || col === 6)) continue;
                 const circle = document.createElement("div");
-               circle.classList.add("circle");
+                circle.classList.add("circle");
                let label = tableMap[tableNumber] || tableNumber;
                 circle.textContent = label;
                 tableNumber++;
@@ -374,95 +373,12 @@ let margin = 10; // percent inward from each edge
 let leftPercent = margin + ((col - 1) / (cols - 1)) * (100 - 2 * margin);
 let topPercent  = margin + ((row - 1) / (rows - 1)) * (100 - 2 * margin);
 
-circle.style.left = leftPercent + "%";circle.style.top  = topPercent + "%";
-              container.appendChild(circle);
-           }
-       }
+circle.style.left = leftPercent + "%";
+circle.style.top  = topPercent + "%";
+                container.appendChild(circle);
+            }
+        }
         // Move tables up and left
-// ✅ Insert your saved positions here
-const savedPositions = {
- "1": {"left": "20%", "top": "10%"},
- "2": {"left": "32%", "top": "10%"},
- "3": {"left": "44%", "top": "10%"},
- "4": {"left": "57%", "top": "10%"},
- "5": {"left": "70%", "top": "10%"},
- "6": {"left": "82%", "top": "10%"},
- "7": {"left": "10%", "top": "30%"},
- "8": {"left": "20%", "top": "30%"},
- "9": {"left": "30%", "top": "30%"},
- "10": {"left": "70%", "top": "30%"},
- "11": {"left": "80%", "top": "30%"},
- "12": {"left": "90%", "top": "30%"},
- "13": {"left": "10%", "top": "50%"},
- "14": {"left": "20%", "top": "50%"},
- "15": {"left": "30%", "top": "50%"},
- "16": {"left": "70%", "top": "50%"},
- "17": {"left": "80%", "top": "50%"},
- "18": {"left": "90%", "top": "50%"},
- "19": {"left": "10%", "top": "70%"},
- "20": {"left": "20%", "top": "70%"},
- "21": {"left": "30%", "top": "70%"},
- "22": {"left": "80%", "top": "90%"},
- "23": {"left": "80%", "top": "70%"},
- "24": {"left": "90%", "top": "70%"},
- "25": {"left": "10%", "top": "90%"},
- "26": {"left": "20%", "top": "90%"},
- "27": {"left": "30%", "top": "90%"},
- "28": {"left": "40%", "top": "78%"},
- "29": {"left": "50%", "top": "78%"},
- "30": {"left": "60%", "top": "78%"},
- "31": {"left": "70%", "top": "90%"},
- "BAND": {"left": "70%", "top": "70%"},
- "Help": {"left": "90%", "top": "90%"}
-};
-
-// Clear old circles
-container.innerHTML = "";
-
-// Create circles from saved positions
-Object.keys(savedPositions).forEach(label => {
-  const circle = document.createElement("div");
-  circle.classList.add("circle");
-  circle.textContent = label;
-  circle.style.left = savedPositions[label].left;
-  circle.style.top = savedPositions[label].top;
-  container.appendChild(circle);
-});
-//let tableNumber = 1;
-for (let row = 1; row <= rows; row++) {
-  for (let col = 1; col <= cols; col++) {
-    if (row < 5 && (col === 4 || col === 5 || col === 6)) continue;
-    const circle = document.createElement("div");
-    circle.classList.add("circle");
-    let label = tableMap[tableNumber] || tableNumber;
-    circle.textContent = label;
-    tableNumber++;
-Object.keys(savedPositions).forEach(label => {
-  const circle = document.createElement("div");
-  circle.classList.add("circle");
-  circle.textContent = label;
-  circle.style.left = savedPositions[label].left;
-  circle.style.top = savedPositions[label].top;
-  container.appendChild(circle);
-});
-
-    // ✅ Use saved position if available, otherwise fallback to grid
-    if (savedPositions[label]) {
-      circle.style.left = savedPositions[label].left;
-     circle.style.top  = savedPositions[label].top;
-   } else {
-     let margin = 10;
-  let leftPercent = margin + ((col - 1) / (cols - 1)) * (100 - 2 * margin);
-     let topPercent  = margin + ((row - 1) / (rows - 1)) * (100 - 2 * margin);
-     circle.style.left = leftPercent + "%";
-     circle.style.top  = topPercent + "%";
-  }
-
-   container.appendChild(circle);
-}
-}
-
-        
 const allCircles = container.querySelectorAll(".circle");
 
 allCircles.forEach(circle => {
@@ -518,25 +434,22 @@ container.querySelectorAll(".circle").forEach(circle => {
 
 document.addEventListener("keydown", (e) => {
   if (!editingMode || !selectedCircle) return;
-    let top = parseFloat(selectedCircle.style.top);
-let left = parseFloat(selectedCircle.style.left);
-
-switch(e.key) {
-  case "ArrowUp": selectedCircle.style.top = (top - 1) + "%"; break;
-  case "ArrowDown": selectedCircle.style.top = (top + 1) + "%"; break;
-  case "ArrowLeft": selectedCircle.style.left = (left - 1) + "%"; break;
-  case "ArrowRight": selectedCircle.style.left = (left + 1) + "%"; break;
-}
-
-    });
-  function exportPositions() {
+  let top = parseInt(selectedCircle.style.top);
+  let left = parseInt(selectedCircle.style.left);
+  switch(e.key) {
+    case "ArrowUp": selectedCircle.style.top = (top - 5) + "px"; break;
+    case "ArrowDown": selectedCircle.style.top = (top + 5) + "px"; break;
+    case "ArrowLeft": selectedCircle.style.left = (left - 5) + "px"; break;
+    case "ArrowRight": selectedCircle.style.left = (left + 5) + "px"; break;
+  }
+      function exportPositions() {
     const positions = {};
     document.querySelectorAll(".circle").forEach(c => {
         positions[c.textContent] = { left: c.style.left, top: c.style.top };
     });
     console.log(JSON.stringify(positions, null, 2));
 }
-         
+});
          
     document.getElementById("findCarParkBtn").addEventListener("click", function () {
         // Replace this URL with the actual car park location link
