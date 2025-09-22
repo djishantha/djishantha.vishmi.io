@@ -526,6 +526,14 @@ for (let row = 1; row <= rows; row++) {
     let label = tableMap[tableNumber] || tableNumber;
     circle.textContent = label;
     tableNumber++;
+Object.keys(savedPositions).forEach(label => {
+  const circle = document.createElement("div");
+  circle.classList.add("circle");
+  circle.textContent = label;
+  circle.style.left = savedPositions[label].left;
+  circle.style.top = savedPositions[label].top;
+  container.appendChild(circle);
+});
 
     // ✅ Use saved position if available, otherwise fallback to grid
     if (savedPositions[label]) {
