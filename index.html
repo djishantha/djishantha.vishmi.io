@@ -359,26 +359,84 @@ const tableMap = {
   33: "Help",    // Example: 5 → VIP
   32: "22"  // Example: 10 → Bride
 };
-        for (let row = 1; row <= rows; row++) {
-            for (let col = 1; col <= cols; col++) {
-                if (row < 5 && (col === 4 || col === 5 || col === 6)) continue;
-                const circle = document.createElement("div");
-                circle.classList.add("circle");
-               let label = tableMap[tableNumber] || tableNumber;
-                circle.textContent = label;
-                tableNumber++;
+       // for (let row = 1; row <= rows; row++) {
+          //  for (let col = 1; col <= cols; col++) {
+              // if (row < 5 && (col === 4 || col === 5 || col === 6)) continue;
+               // const circle = document.createElement("div");
+               // circle.classList.add("circle");
+               //let label = tableMap[tableNumber] || tableNumber;
+              //  circle.textContent = label;
+               // tableNumber++;
 
                 // Calculate positions as percentages (so they scale with image)
-let margin = 10; // percent inward from each edge
-let leftPercent = margin + ((col - 1) / (cols - 1)) * (100 - 2 * margin);
-let topPercent  = margin + ((row - 1) / (rows - 1)) * (100 - 2 * margin);
+//let margin = 10; // percent inward from each edge
+//let leftPercent = margin + ((col - 1) / (cols - 1)) * (100 - 2 * margin);
+//let topPercent  = margin + ((row - 1) / (rows - 1)) * (100 - 2 * margin);
 
-circle.style.left = leftPercent + "%";
-circle.style.top  = topPercent + "%";
-                container.appendChild(circle);
-            }
-        }
+//circle.style.left = leftPercent + "%";
+//circle.style.top  = topPercent + "%";
+              //  container.appendChild(circle);
+          //  }
+      //  }
         // Move tables up and left
+// ✅ Insert your saved positions here
+const savedPositions = {
+  "1": { "left": "10%", "top": "10%" },
+  "2": { "left": "20%", "top": "10%" },
+  "3": { "left": "40%", "top": "10%" },
+  "4": { "left": "60%", "top": "10%" },
+  "5": { "left": "80%", "top": "10%" },
+  "6": { "left": "90%", "top": "10%" },
+  "7": { "left": "10%", "top": "30%" },
+  "8": { "left": "20%", "top": "30%" },
+  "9": { "left": "30%", "top": "30%" },
+  "10": { "left": "70%", "top": "30%" },
+  "11": { "left": "80%", "top": "30%" },
+  "12": { "left": "90%", "top": "30%" },
+  "13": { "left": "10%", "top": "50%" },
+  "14": { "left": "20%", "top": "50%" },
+  "15": { "left": "30%", "top": "50%" },
+  "16": { "left": "70%", "top": "50%" },
+  "17": { "left": "80%", "top": "50%" },
+  "18": { "left": "90%", "top": "50%" },
+  "19": { "left": "10%", "top": "70%" },
+  "20": { "left": "20%", "top": "70%" },
+  "21": { "left": "30%", "top": "70%" },
+  "22": { "left": "80%", "top": "90%" },
+  "23": { "left": "80%", "top": "70%" },
+  "24": { "left": "90%", "top": "70%" },
+  "25": { "left": "10%", "top": "90%" },
+  "26": { "left": "20%", "top": "90%" },
+  "27": { "left": "30%", "top": "90%" },
+  "28": { "left": "40%", "top": "90%" },
+  "29": { "left": "50%", "top": "88%" },
+  "30": { "left": "60%", "top": "88%" },
+  "31": { "left": "70%", "top": "90%" },
+  "BAND": { "left": "70%", "top": "70%" },
+  "Help": { "left": "90%", "top": "90%" }
+};
+
+let tableNumber = 1;
+for (let row = 1; row <= rows; row++) {
+  for (let col = 1; col <= cols; col++) {
+    if (row < 5 && (col === 4 || col === 5 || col === 6)) continue;
+    const circle = document.createElement("div");
+    circle.classList.add("circle");
+    let label = tableMap[tableNumber] || tableNumber;
+    circle.textContent = label;
+    tableNumber++;
+
+    // ✅ Use saved positions if available
+    if (savedPositions[label]) {
+      circle.style.left = savedPositions[label].left;
+      circle.style.top  = savedPositions[label].top;
+    }
+
+    container.appendChild(circle);
+  }
+}
+
+         
 const allCircles = container.querySelectorAll(".circle");
 
 allCircles.forEach(circle => {
