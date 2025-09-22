@@ -576,13 +576,29 @@ document.addEventListener("keydown", (e) => {
         // Replace this URL with the actual car park location link
         window.open("https://maps.app.goo.gl/rW5yMQzisJt6ZzSM8", "_blank");
     });
-           function exportPositions() {
+         function exportPositions() {
   const positions = {};
+  const container = document.getElementById("container");
+  const containerWidth = container.offsetWidth;
+  const containerHeight = container.offsetHeight;
+
   document.querySelectorAll(".circle").forEach(c => {
-      positions[c.textContent] = { left: c.style.left, top: c.style.top };
+    const leftPx = parseFloat(c.style.left);
+    const topPx = parseFloat(c.style.top);
+
+    // Convert px → %
+    const leftPercent = (leftPx / containerWidth) * 100;
+    const topPercent = (topPx / containerHeight) * 100;
+
+    positions[c.textContent] = {
+      left: leftPercent.toFixed(2) + "%",
+      top: topPercent.toFixed(2) + "%"
+    };
   });
+
   console.log(JSON.stringify(positions, null, 2));
 }
+
 
 </script>
 </body>
