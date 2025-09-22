@@ -434,15 +434,22 @@ container.querySelectorAll(".circle").forEach(circle => {
 
 document.addEventListener("keydown", (e) => {
   if (!editingMode || !selectedCircle) return;
-let top = parseFloat(selectedCircle.style.top);
-let left = parseFloat(selectedCircle.style.left);
-const step = 2;
-   switch(e.key) {
+
+  const rect = container.getBoundingClientRect();
+  const step = 5; // pixels per arrow press
+
+  // current position in px relative to container
+  let currentTop = selectedCircle.offsetTop;
+  let currentLeft = selectedCircle.offsetLeft;
+
+  switch(e.key) {
     case "ArrowUp": selectedCircle.style.top = (currentTop - step) + "px"; break;
     case "ArrowDown": selectedCircle.style.top = (currentTop + step) + "px"; break;
     case "ArrowLeft": selectedCircle.style.left = (currentLeft - step) + "px"; break;
     case "ArrowRight": selectedCircle.style.left = (currentLeft + step) + "px"; break;
   }
+});
+
       function exportPositions() {
     const positions = {};
     document.querySelectorAll(".circle").forEach(c => {
