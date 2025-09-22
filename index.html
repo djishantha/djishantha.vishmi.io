@@ -442,18 +442,15 @@ document.addEventListener("keydown", (e) => {
     case "ArrowLeft": selectedCircle.style.left = (left - 5) + "px"; break;
     case "ArrowRight": selectedCircle.style.left = (left + 5) + "px"; break;
   }
-});
-        
-    </script>
-    function exportPositions() {
+      function exportPositions() {
     const positions = {};
     document.querySelectorAll(".circle").forEach(c => {
         positions[c.textContent] = { left: c.style.left, top: c.style.top };
     });
     console.log(JSON.stringify(positions, null, 2));
 }
-
-    <script>
+});
+         
     document.getElementById("findCarParkBtn").addEventListener("click", function () {
         // Replace this URL with the actual car park location link
         window.open("https://maps.app.goo.gl/rW5yMQzisJt6ZzSM8", "_blank");
