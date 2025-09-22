@@ -434,14 +434,24 @@ container.querySelectorAll(".circle").forEach(circle => {
 
 document.addEventListener("keydown", (e) => {
   if (!editingMode || !selectedCircle) return;
-  let top = parseInt(selectedCircle.style.top);
-  let left = parseInt(selectedCircle.style.left);
-  switch(e.key) {
-    case "ArrowUp": selectedCircle.style.top = (top - 5) + "px"; break;
-    case "ArrowDown": selectedCircle.style.top = (top + 5) + "px"; break;
-    case "ArrowLeft": selectedCircle.style.left = (left - 5) + "px"; break;
-    case "ArrowRight": selectedCircle.style.left = (left + 5) + "px"; break;
-  }
+ // let top = parseInt(selectedCircle.style.top);
+ // let left = parseInt(selectedCircle.style.left);
+ // switch(e.key) {
+    //case "ArrowUp": selectedCircle.style.top = (top - 5) + "px"; break;
+   // case "ArrowDown": selectedCircle.style.top = (top + 5) + "px"; break;
+   // case "ArrowLeft": selectedCircle.style.left = (left - 5) + "px"; break;
+   // case "ArrowRight": selectedCircle.style.left = (left + 5) + "px"; break;
+//  }
+    let top = parseFloat(selectedCircle.style.top);
+let left = parseFloat(selectedCircle.style.left);
+
+switch(e.key) {
+  case "ArrowUp": selectedCircle.style.top = (top - 1) + "%"; break;
+  case "ArrowDown": selectedCircle.style.top = (top + 1) + "%"; break;
+  case "ArrowLeft": selectedCircle.style.left = (left - 1) + "%"; break;
+  case "ArrowRight": selectedCircle.style.left = (left + 1) + "%"; break;
+}
+
       function exportPositions() {
     const positions = {};
     document.querySelectorAll(".circle").forEach(c => {
