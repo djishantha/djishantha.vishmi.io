@@ -441,14 +441,15 @@ document.addEventListener("keydown", (e) => {
     case "ArrowDown": selectedCircle.style.top = (top + 5) + "px"; break;
     case "ArrowLeft": selectedCircle.style.left = (left - 5) + "px"; break;
     case "ArrowRight": selectedCircle.style.left = (left + 5) + "px"; break;
-  }
-      function exportPositions() {
-    const positions = {};
-    document.querySelectorAll(".circle").forEach(c => {
-        positions[c.textContent] = { left: c.style.left, top: c.style.top };
-    });
-    console.log(JSON.stringify(positions, null, 2));
+ }
+    function exportPositions() {
+  const positions = {};
+  document.querySelectorAll(".circle").forEach(c => {
+      positions[c.textContent] = { left: c.style.left, top: c.style.top };
+  });
+  console.log(JSON.stringify(positions, null, 2));
 }
+
 });
          
     document.getElementById("findCarParkBtn").addEventListener("click", function () {
