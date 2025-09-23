@@ -578,15 +578,23 @@ document.addEventListener("keydown", (e) => {
     });
          function exportPositions() {
   const positions = {};
-  const container = document.getElementById("container");
+  const container = document.getElementById("circlesContainer");
   const containerWidth = container.offsetWidth;
   const containerHeight = container.offsetHeight;
 
   document.querySelectorAll(".circle").forEach(c => {
-    const leftPx = parseFloat(c.style.left);
-    const topPx = parseFloat(c.style.top);
+    let leftVal = c.style.left;
+    let topVal = c.style.top;
 
-    // Convert px → %
+    // Convert px to % if needed
+    const leftPx = leftVal.includes("%")
+      ? (parseFloat(leftVal) / 100) * containerWidth
+      : parseFloat(leftVal);
+
+    const topPx = topVal.includes("%")
+      ? (parseFloat(topVal) / 100) * containerHeight
+      : parseFloat(topVal);
+
     const leftPercent = (leftPx / containerWidth) * 100;
     const topPercent = (topPx / containerHeight) * 100;
 
