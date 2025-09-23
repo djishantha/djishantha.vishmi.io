@@ -359,152 +359,25 @@ const tableMap = {
   33: "Help",    // Example: 5 → VIP
   32: "22"  // Example: 10 → Bride
 };
-       // Paste your exported JSON here
-const savedPositions = {
-"1": {
-    "left": "10.00%",
-    "top": "NaN%"
-  },
-  "2": {
-    "left": "20.00%",
-    "top": "NaN%"
-  },
-  "3": {
-    "left": "60.00%",
-    "top": "Infinity%"
-  },
-  "4": {
-    "left": "40.00%",
-    "top": "Infinity%"
-  },
-  "5": {
-    "left": "47.73%",
-    "top": "NaN%"
-  },
-  "6": {
-    "left": "90.00%",
-    "top": "NaN%"
-  },
-  "7": {
-    "left": "10.00%",
-    "top": "NaN%"
-  },
-  "8": {
-    "left": "20.00%",
-    "top": "NaN%"
-  },
-  "9": {
-    "left": "30.00%",
-    "top": "NaN%"
-  },
-  "10": {
-    "left": "70.00%",
-    "top": "NaN%"
-  },
-  "11": {
-    "left": "80.00%",
-    "top": "NaN%"
-  },
-  "12": {
-    "left": "90.00%",
-    "top": "NaN%"
-  },
-  "13": {
-    "left": "10.00%",
-    "top": "NaN%"
-  },
-  "14": {
-    "left": "20.00%",
-    "top": "NaN%"
-  },
-  "15": {
-    "left": "30.00%",
-    "top": "NaN%"
-  },
-  "16": {
-    "left": "70.00%",
-    "top": "NaN%"
-  },
-  "17": {
-    "left": "80.00%",
-    "top": "NaN%"
-  },
-  "18": {
-    "left": "90.00%",
-    "top": "NaN%"
-  },
-  "19": {
-    "left": "10.00%",
-    "top": "NaN%"
-  },
-  "20": {
-    "left": "20.00%",
-    "top": "NaN%"
-  },
-  "21": {
-    "left": "30.00%",
-    "top": "NaN%"
-  },
-  "22": {
-    "left": "80.00%",
-    "top": "NaN%"
-  },
-  "23": {
-    "left": "80.00%",
-    "top": "NaN%"
-  },
-  "24": {
-    "left": "90.00%",
-    "top": "NaN%"
-  },
-  "25": {
-    "left": "10.00%",
-    "top": "NaN%"
-  },
-  "26": {
-    "left": "20.00%",
-    "top": "NaN%"
-  },
-  "27": {
-    "left": "30.00%",
-    "top": "NaN%"
-  },
-  "28": {
-    "left": "40.00%",
-    "top": "NaN%"
-  },
-  "29": {
-    "left": "50.00%",
-    "top": "Infinity%"
-  },
-  "30": {
-    "left": "60.00%",
-    "top": "Infinity%"
-  },
-  "31": {
-    "left": "70.00%",
-    "top": "NaN%"
-  },
-  "BAND": {
-    "left": "70.00%",
-    "top": "NaN%"
-  },
-  "Help": {
-    "left": "90.00%",
-    "top": "NaN%"
-  }
-};
+        for (let row = 1; row <= rows; row++) {
+            for (let col = 1; col <= cols; col++) {
+                if (row < 5 && (col === 4 || col === 5 || col === 6)) continue;
+                const circle = document.createElement("div");
+                circle.classList.add("circle");
+               let label = tableMap[tableNumber] || tableNumber;
+                circle.textContent = label;
+                tableNumber++;
 
-// Generate circles directly from saved positions
-Object.entries(savedPositions).forEach(([label, pos]) => {
-  const circle = document.createElement("div");
-  circle.classList.add("circle");
-  circle.textContent = label;
-  circle.style.left = pos.left;
-  circle.style.top = pos.top;
-  container.appendChild(circle);
-});
+                // Calculate positions as percentages (so they scale with image)
+let margin = 10; // percent inward from each edge
+let leftPercent = margin + ((col - 1) / (cols - 1)) * (100 - 2 * margin);
+let topPercent  = margin + ((row - 1) / (rows - 1)) * (100 - 2 * margin);
 
+circle.style.left = leftPercent + "%";
+circle.style.top  = topPercent + "%";
+                container.appendChild(circle);
+            }
+        }
         // Move tables up and left
 const allCircles = container.querySelectorAll(".circle");
 
@@ -576,27 +449,16 @@ document.addEventListener("keydown", (e) => {
         // Replace this URL with the actual car park location link
         window.open("https://maps.app.goo.gl/rW5yMQzisJt6ZzSM8", "_blank");
     });
-         function exportPositions() {
+          function exportPositions() {
   const positions = {};
-  const container = document.getElementById("circlesContainer");
-  const containerWidth = container.offsetWidth;
-  const containerHeight = container.offsetHeight;
+  const container = document.querySelector(".layout-container"); // correct container
+  const containerRect = container.getBoundingClientRect();
 
   document.querySelectorAll(".circle").forEach(c => {
-    let leftVal = c.style.left;
-    let topVal = c.style.top;
+    const circleRect = c.getBoundingClientRect();
 
-    // Convert px to % if needed
-    const leftPx = leftVal.includes("%")
-      ? (parseFloat(leftVal) / 100) * containerWidth
-      : parseFloat(leftVal);
-
-    const topPx = topVal.includes("%")
-      ? (parseFloat(topVal) / 100) * containerHeight
-      : parseFloat(topVal);
-
-    const leftPercent = (leftPx / containerWidth) * 100;
-    const topPercent = (topPx / containerHeight) * 100;
+    const leftPercent = ((circleRect.left - containerRect.left) / containerRect.width) * 100;
+    const topPercent = ((circleRect.top - containerRect.top) / containerRect.height) * 100;
 
     positions[c.textContent] = {
       left: leftPercent.toFixed(2) + "%",
