@@ -298,6 +298,51 @@ h2 {
 { firstName: "Wed Supports", lastName: "Plan Cam Dri", table: 32 },
         ];
 
+        const savedPositions = {
+  "1": { "left": "2.00%", "top": "2.00%" },
+  "2": { "left": "38.27%", "top": "2.00%" },
+  "3": { "left": "34.73%", "top": "57.00%" },
+  "4": { "left": "43.14%", "top": "57.00%" },
+  "5": { "left": "50.77%", "top": "2.00%" },
+  "6": { "left": "82.00%", "top": "2.00%" },
+  "7": { "left": "2.00%", "top": "18.00%" },
+  "8": { "left": "12.00%", "top": "18.00%" },
+  "9": { "left": "22.00%", "top": "18.00%" },
+  "10": { "left": "62.00%", "top": "18.00%" },
+  "11": { "left": "72.00%", "top": "18.00%" },
+  "12": { "left": "82.00%", "top": "18.00%" },
+  "13": { "left": "2.00%", "top": "38.00%" },
+  "14": { "left": "12.00%", "top": "38.00%" },
+  "15": { "left": "38.27%", "top": "38.00%" },
+  "16": { "left": "54.18%", "top": "38.00%" },
+  "17": { "left": "72.00%", "top": "38.00%" },
+  "18": { "left": "82.00%", "top": "38.00%" },
+  "19": { "left": "2.00%", "top": "58.00%" },
+  "20": { "left": "12.00%", "top": "58.00%" },
+  "21": { "left": "22.00%", "top": "58.00%" },
+  "22": { "left": "72.00%", "top": "78.00%" },
+  "23": { "left": "72.00%", "top": "58.00%" },
+  "24": { "left": "82.00%", "top": "58.00%" },
+  "25": { "left": "2.00%", "top": "78.00%" },
+  "26": { "left": "12.00%", "top": "78.00%" },
+  "27": { "left": "22.00%", "top": "78.00%" },
+  "28": { "left": "32.00%", "top": "78.00%" },
+  "29": { "left": "42.00%", "top": "78.00%" },
+  "30": { "left": "52.00%", "top": "78.00%" },
+  "31": { "left": "62.00%", "top": "78.00%" },
+  "BAND": { "left": "63.96%", "top": "2.00%" },
+  "Help": { "left": "18.96%", "top": "2.00%" }
+};
+
+// Apply saved positions
+document.querySelectorAll(".circle").forEach(circle => {
+  const label = circle.textContent;
+  if (savedPositions[label]) {
+    circle.style.left = savedPositions[label].left;
+    circle.style.top  = savedPositions[label].top;
+  }
+});
+
         document.addEventListener("DOMContentLoaded", function () {
             const button = document.getElementById("findTableBtn");
             button.addEventListener("click", function () {
@@ -434,15 +479,15 @@ container.querySelectorAll(".circle").forEach(circle => {
 
 document.addEventListener("keydown", (e) => {
   if (!editingMode || !selectedCircle) return;
-  let top = parseInt(selectedCircle.style.top);
-  let left = parseInt(selectedCircle.style.left);
-  switch(e.key) {
-    case "ArrowUp": selectedCircle.style.top = (top - 5) + "px"; break;
-    case "ArrowDown": selectedCircle.style.top = (top + 5) + "px"; break;
-    case "ArrowLeft": selectedCircle.style.left = (left - 5) + "px"; break;
-    case "ArrowRight": selectedCircle.style.left = (left + 5) + "px"; break;
- }
-  
+let top = parseFloat(selectedCircle.style.top);
+let left = parseFloat(selectedCircle.style.left);
+
+switch(e.key) {
+    case "ArrowUp": selectedCircle.style.top = (top - 2) + "%"; break;
+    case "ArrowDown": selectedCircle.style.top = (top + 2) + "%"; break;
+    case "ArrowLeft": selectedCircle.style.left = (left - 2) + "%"; break;
+    case "ArrowRight": selectedCircle.style.left = (left + 2) + "%"; break;
+} 
 });
          
     document.getElementById("findCarParkBtn").addEventListener("click", function () {
