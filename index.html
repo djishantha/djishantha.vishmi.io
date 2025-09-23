@@ -348,8 +348,8 @@ circles.forEach(circle => {
         const gapX = 50;  // half the horizontal gap
         const gapY = 59;  // half the vertical gap
 
-        const offsetX = -20;
-        const offsetY = -20;
+        const offsetX = 40;
+        const offsetY = 40;
 
         let tableNumber = 1;
         const container = document.getElementById("circlesContainer");
@@ -535,8 +535,18 @@ const allCircles = container.querySelectorAll(".circle");
 allCircles.forEach(circle => {
   const label = circle.textContent;
   if (savedPositions[label]) {
-    circle.style.left = savedPositions[label].left;
-    circle.style.top = savedPositions[label].top;
+    // get saved percentages
+    let leftPercent = parseFloat(savedPositions[label].left);
+    let topPercent  = parseFloat(savedPositions[label].top);
+
+    // clamp inside the image with offset
+    let offset = 2; // percent inward
+    leftPercent = Math.max(offset, Math.min(100 - offset, leftPercent));
+    topPercent  = Math.max(offset, Math.min(100 - offset, topPercent));
+
+    // apply to circle
+    circle.style.left = leftPercent + "%";
+    circle.style.top  = topPercent + "%";
   }
 });
 
