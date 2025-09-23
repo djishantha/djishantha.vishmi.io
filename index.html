@@ -1,221 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wedding Seating</title>
-<style>
-body {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1 class="main-welcome">WELCOME !</h1>
+    <h2>Harshana & Vishmi Wedding</h2>
+<h3 class="hotel-name">JETWING BLUE - NEGOMBO</h3>
+    <style>
+        body {
     font-family: sans-serif;
     background-color: #87CEEB;
     text-align: center;
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
-}
+        }
 .main-welcome {
-    font-size: 48px;
+    font-size: 64px; /* Double typical title (e.g. if original was ~32px) */
     color: blue;
     font-family: 'Cursive', 'Brush Script MT', sans-serif;
     margin-bottom: 10px;
 }
-h2 { font-size: 28px; margin: 10px 0; }
-.hotel-name { font-size: 16px; color: green; font-family: 'Georgia', serif; margin-top: 5px; }
-.container {
+
+h2 {
+    font-size: 32px;
+    margin: 10px 0;
+}
+.hotel-name {
+    font-size: 16px; /* Half of h2 */
+    color: green;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin-top: 5px;
+}
+        .container {
     background-color: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     margin: 0 auto;
-    max-width: 95%;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-input { padding: 10px; font-size: 16px; margin: 10px 5px; }
-button {
+    max-width: 500px;
+    width: 90%;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+     
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        #findCarParkBtn {
+    margin-top: 20px;
     padding: 10px 15px;
     font-size: 16px;
     cursor: pointer;
+    background-color: #28a745;
+    color: white;
     border: none;
     border-radius: 5px;
-    color: white;
 }
-#findTableBtn { background-color: #007bff; }
-#findTableBtn:hover { background-color: #0056b3; }
-#findCarParkBtn { background-color: #28a745; margin-top: 15px; }
-#findCarParkBtn:hover { background-color: #1e7e34; }
-#results { margin-top: 15px; font-size: 18px; color: #333; }
-.layout-container { position: relative; width: 100%; max-width: 500px; margin: 0 auto; }
-.venue-img { width: 100%; height: auto; border-radius: 10px; display:block; }
-.circle {
-    position: absolute;
-    width: 8%;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-weight: bold;
-    font-size: 0.8em;
-    transform: translate(-50%, -50%);
-    background-color: blue;
-    cursor: pointer;
+
+#findCarParkBtn:hover {
+    background-color: #1e7e34;
 }
-.circle.selected { border: 2px solid yellow; }
+
+        #results {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+      .layout-container {
+            position: relative;
+            display: inline-block;
+        }
+        .venue-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+ .circle {
+  position: absolute;
+  width: 8%;   /* relative size instead of fixed 25px */
+  aspect-ratio: 1/1;  /* keeps it round */
+  background-color: blue;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8em;
+  transform: translate(-50%, -50%); /* center on the % position */
+}
+.circle.selected {
+  border: 2px solid yellow;
+}
 @keyframes blinkColors {
-    0% { background-color: blue; }
-    33% { background-color: #00FF00; }
-    66% { background-color: #FFFF00; }
-    100% { background-color: blue; }
+  0%   { background-color: blue; }
+  33%  { background-color: #00FF00; }  /* bright green */
+  66%  { background-color: #FFFF00; }  /* bright yellow */
+  100% { background-color: blue; }
 }
-.circle.blink { animation: blinkColors 1.5s infinite; }
-</style>
+
+.circle.blink {
+  animation: blinkColors 1.5s infinite;  /* adjust speed as needed */
+}
+
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Find Your Table</h1>
+        <input type="text" id="firstNameInput" placeholder="Enter your first name">
+        <button id="findTableBtn">Table Number</button>
+        <div id="results"></div>
+         <div class="layout-container">
+            <img src="Jetwing Blue.jpg" alt="Wedding Table Plan" class="venue-img">
+            <div id="circlesContainer"></div>
+        </div>
 
-<div class="container">
-    <h1 class="main-welcome">WELCOME !</h1>
-    <h2>Harshana & Vishmi Wedding</h2>
-    <h3 class="hotel-name">JETWING BLUE - NEGOMBO</h3>
-
-    <h1>Find Your Table</h1>
-    <input type="text" id="firstNameInput" placeholder="Enter your first name">
-    <button id="findTableBtn">Table Number</button>
-    <div id="results"></div>
-
-    <div class="layout-container">
-        <img src="Jetwing Blue.jpg" alt="Wedding Table Plan" class="venue-img">
-        <div id="circlesContainer"></div>
+        <button id="findCarParkBtn">Find Your Car Park</button>
     </div>
 
-    <button id="findCarParkBtn">Find Your Car Park</button>
-</div>
+    <script>
+        const guests = [
+{ firstName: "Shiromi", lastName: "Sirithunga", table: 1 },
+{ firstName: "Uditha", lastName: "Sirithunga", table: 1 },
+{ firstName: "Milani", lastName: "Sirithunga", table: 1 },
+{ firstName: "Latha", lastName: "Galappaththi", table: 1 },
+{ firstName: "Ajith", lastName: "Dias", table: 1 },
+{ firstName: "Thilani", lastName: "Dias", table: 1 },
+{ firstName: "Shanthi", lastName: "Galappaththi", table: 1 },
+{ firstName: "Rekha", lastName: "De Silva", table: 1 },
+{ firstName: "Prabath", lastName: "Kasthuriarachchi", table: 1 },
+{ firstName: "Akash", lastName: "Hewapathirana", table: 2 },
+{ firstName: "Kanaki", lastName: "Hewapathirana", table: 2 },
+{ firstName: "Dulshani", lastName: "Rajapaksa", table: 2 },
+{ firstName: "Kavisha", lastName: "Sirithunga", table: 2 },
+{ firstName: "Wagisha", lastName: "Sirithunga", table: 2 },
+{ firstName: "Sadew", lastName: "Dias", table: 2 },
+{ firstName: "Yashith", lastName: "Dias", table: 2 },
+{ firstName: "Kisara", lastName: "Kasthuriarachchi", table: 2 },
+{ firstName: "Gangi", lastName: "Gallappththi", table: 2 },
+{ firstName: "Gangi", lastName: "Husband", table: 2 },
+{ firstName: "Neetaha", lastName: "Jayakodi", table: 3 },
+{ firstName: "Indrananda", lastName: "Weerasena", table: 3 },
+{ firstName: "Kumuduni", lastName: "Damayanthi", table: 3 },
+{ firstName: "Luxman", lastName: "Jeewantha", table: 3 },
+{ firstName: "Chandrika", lastName: "Weliwita", table: 3 },
+{ firstName: "Peshaka", lastName: "Ranganath", table: 3 },
+{ firstName: "wife", lastName: "Ranganath", table: 3 },
+{ firstName: "Lakmali", lastName: "Rangani", table: 3 },
+{ firstName: "Nayanajith", lastName: "Dananjaya", table: 3 },
+{ firstName: "wife", lastName: "Dananjaya", table: 3 },
+{ firstName: "Saranapala", lastName: "Saranapala", table: 3 },
+{ firstName: "Kalhari", lastName: "Fernando", table: 4 },
+{ firstName: "Nipun", lastName: "Kalhari", table: 4 },
+{ firstName: "Gayan", lastName: "Weerasena", table: 4 },
+{ firstName: "Champika", lastName: "weerasena", table: 4 },
+{ firstName: "Ayesha", lastName: "Weerasena", table: 4 },
+{ firstName: "Harsha", lastName: "Viraj", table: 4 },
+{ firstName: "Kavishka", lastName: "Jeewantha", table: 4 },
+{ firstName: "HM", lastName: "Mangalika", table: 4 },
+{ firstName: "Nalin", lastName: "Dissanayake", table: 4 },
+{ firstName: "Achini", lastName: "Pushpakumara", table: 4 },
+{ firstName: "Dayal", lastName: "Pushpakumara", table: 5 },
+{ firstName: "Susanthi", lastName: "Manohari", table: 5 },
+{ firstName: "Malee", lastName: "Kannaggara", table: 5 },
+{ firstName: "Aruna", lastName: "Kannaggara", table: 5 },
+{ firstName: "Shashi", lastName: "Shiwaraj", table: 5 },
+{ firstName: "Shiwa", lastName: "Shiwaraj", table: 5 },
+{ firstName: "Devika", lastName: "Kolambage", table: 5 },
+{ firstName: "Chulan", lastName: "Kotudurage", table: 5 },
+{ firstName: "Ranil", lastName: "Liyanage", table: 5 },
+{ firstName: "Iroshika", lastName: "Liyanage", table: 5 },
+{ firstName: "Anudi", lastName: "Kannaggara", table: 6 },
+{ firstName: "Sajani", lastName: "Kannaggara", table: 6 },
+{ firstName: "Suzan", lastName: "Niweda", table: 6 },
+{ firstName: "Sheron", lastName: "Philip", table: 6 },
+{ firstName: "Washni", lastName: "Michlle", table: 6 },
+{ firstName: "Paminda", lastName: "Thilakarathne", table: 6 },
+{ firstName: "Thushari", lastName: "Amarasinghe", table: 6 },
+{ firstName: "Chandani", lastName: "Welarathne", table: 6 },
+{ firstName: "Yenuli", lastName: "Welarathne", table: 6 },
+{ firstName: "Hasanga", lastName: "De Silva", table: 6 },
+{ firstName: "Wsantha", lastName: "Wickramasinghe", table: 7 },
+{ firstName: "Renu", lastName: "Wickramasinghe", table: 7 },
+{ firstName: "Shashila", lastName: "De Silva", table: 7 },
+{ firstName: "Vidushan", lastName: "Wickramasinghe", table: 7 },
+{ firstName: "Shahan", lastName: "Wickramasinghe", table: 7 },
+{ firstName: "Dilki", lastName: "Perera", table: 7 },
+{ firstName: "Champika", lastName: "Subasinghe", table: 7 },
+{ firstName: "Hansi", lastName: "De Silva", table: 7 },
+{ firstName: "Nilmini", lastName: "Dissanayake", table: 7 },
+{ firstName: "Susantha", lastName: "Rupasinghe", table: 7 },
+{ firstName: "Saji", lastName: "De Silva", table: 8 },
+{ firstName: "Saji Son", lastName: "Siriwardena", table: 8 },
+{ firstName: "Nilanthi", lastName: "Perera", table: 8 },
+{ firstName: "Ajith", lastName: "Perera", table: 8 },
+{ firstName: "Nihal", lastName: "Edward", table: 8 },
+{ firstName: "Seetha", lastName: "Edward", table: 8 },
+{ firstName: "Rohana", lastName: "Gunawardena", table: 8 },
+{ firstName: "Devi", lastName: "Gunawardena", table: 8 },
+{ firstName: "Mahesh", lastName: "Karunarathne", table: 8 },
+{ firstName: "Wasanthi", lastName: "Karunarathne", table: 8 },
+{ firstName: "rohini", lastName: "Kaluarachchi", table: 9 },
+{ firstName: "Sunil", lastName: "Kaluarachchi", table: 9 },
+{ firstName: "Isuri", lastName: "Kaluarachchi", table: 9 },
+{ firstName: "Anula", lastName: "Gunarathne", table: 9 },
+{ firstName: "xxxxxx", lastName: "Gunarathne", table: 9 },
+{ firstName: "Lal", lastName: "Rupasinghe", table: 9 },
+{ firstName: "Maya", lastName: "Rupasinghe", table: 9 },
+{ firstName: "Thusitha", lastName: "Ganegoda", table: 9 },
+{ firstName: "wife", lastName: "Ganegoda", table: 9 },
+{ firstName: "Deepani", lastName: "Dewage", table: 9 },
+{ firstName: "Kamal", lastName: "Gunawardena", table: 10 },
+{ firstName: "Geesara", lastName: "Gunawardena", table: 10 },
+{ firstName: "Priyanwada", lastName: "Karunarathne", table: 10 },
+{ firstName: "Wasundara", lastName: "Karunarathne", table: 10 },
+{ firstName: "Nirosha", lastName: "Rupasinghe", table: 10 },
+{ firstName: "Duwa", lastName: "Gunarathne", table: 10 },
+{ firstName: "Sumudu", lastName: "Senarathne", table: 10 },
+{ firstName: "Upul", lastName: "Jayasinghe", table: 10 },
+{ firstName: "Vijitha USA", lastName: "Perera", table: 10 },
+{ firstName: "wife", lastName: "perera", table: 10 },
+{ firstName: "Jayendra", lastName: "Kuruppu", table: 11 },
+{ firstName: "Dammika", lastName: "Kuruppu", table: 11 },
+{ firstName: "Udeni", lastName: "Adikari", table: 11 },
+{ firstName: "Husband", lastName: "Adikari", table: 11 },
+{ firstName: "dammika", lastName: "Koralage", table: 11 },
+{ firstName: "Luxmi", lastName: "Koralage", table: 11 },
+{ firstName: "Sudath", lastName: "Surendra", table: 11 },
+{ firstName: "wife", lastName: "Surendra", table: 11 },
+{ firstName: "Sudath", lastName: "Withanage", table: 11 },
+{ firstName: "wife", lastName: "Withanage", table: 11 },
+{ firstName: "Shantha", lastName: "Walpala", table: 12 },
+{ firstName: "Chamila", lastName: "Walpala", table: 12 },
+{ firstName: "Rohitha", lastName: "Perera", table: 12 },
+{ firstName: "wife", lastName: "Perera", table: 12 },
+{ firstName: "Sujeewa", lastName: "wijesinghe", table: 12 },
+{ firstName: "wife", lastName: "wijesinghe", table: 12 },
+{ firstName: "Neel", lastName: "Liyanaachchi", table: 12 },
+{ firstName: "wife", lastName: "Liyanarchchi", table: 12 },
+{ firstName: "Neel or Sumith", lastName: "Sirisena", table: 12 },
+{ firstName: "Neel", lastName: "Sirisena", table: 12 },
+{ firstName: "Mahesh", lastName: "Weerarathne", table: 13 },
+{ firstName: "Wife", lastName: "Weerarathne", table: 13 },
+{ firstName: "Nalina", lastName: "Dayananda", table: 13 },
+{ firstName: "wife", lastName: "Dayananda", table: 13 },
+{ firstName: "Nishantha", lastName: "Edirisighe", table: 13 },
+{ firstName: "wife", lastName: "Edirisighe", table: 13 },
+{ firstName: "Prasad", lastName: "Ranasighe", table: 13 },
+{ firstName: "wife", lastName: "Ranasighe", table: 13 },
+{ firstName: "Kamal", lastName: "Nishendra", table: 13 },
+{ firstName: "wife", lastName: "Nishendra", table: 13 },
+{ firstName: "Prasad", lastName: "Kariyapperuma", table: 14 },
+{ firstName: "wife", lastName: "Kariyapperuma", table: 14 },
+{ firstName: "Hemantha", lastName: "Abesundara", table: 14 },
+{ firstName: "wife", lastName: "Abesundara", table: 14 },
+{ firstName: "Chandana", lastName: "Rathnayake", table: 14 },
+{ firstName: "wife", lastName: "Rathnayake", table: 14 },
+{ firstName: "Dammika", lastName: "Kumara", table: 14 },
+{ firstName: "wife", lastName: "Kumara", table: 14 },
+{ firstName: "Mahinda", lastName: "Adikari", table: 14 },
+{ firstName: "wife", lastName: "Adikari", table: 14 },
+{ firstName: "Vishmi", lastName: "school", table: 15 },
+{ firstName: "Vishmi", lastName: "university", table: 16 },
+{ firstName: "Vishmi", lastName: "university", table: 17 },
+{ firstName: "Vishmi", lastName: "hospital", table: 18 },
+{ firstName: "Avishi", lastName: "University", table: 19 },
+{ firstName: "Harshana", lastName: "Guest", table: 20 },
+{ firstName: "Harshana", lastName: "Guest", table: 21 },
+{ firstName: "Harshana", lastName: "Guest", table: 22 },
+{ firstName: "Harshana", lastName: "Guest", table: 23 },
+{ firstName: "Harshana", lastName: "Guest", table: 24 },
+{ firstName: "Harshana", lastName: "Guest", table: 25 },
+{ firstName: "Harshana", lastName: "Guest", table: 26 },
+{ firstName: "Harshana", lastName: "Guest", table: 27 },
+{ firstName: "Harshana", lastName: "Guest", table: 28 },
+{ firstName: "Harshana", lastName: "Guest3", table: 29 },
+{ firstName: "Harshana", lastName: "Guest2", table: 30 },
+{ firstName: "Band", lastName: "Doctors 12", table: 31 },
+{ firstName: "Wed Supports", lastName: "Plan Cam Dri", table: 32 },
+        ];
 
-<script>
-// Guest list
-const guests = [
-  { firstName: "Shiromi", lastName: "Sirithunga", table: 1 },
-  { firstName: "Akash", lastName: "Hewapathirana", table: 2 },
-  // ... Add all guests here
-  { firstName: "Band", lastName: "Doctors 12", table: 31 },
-  { firstName: "Wed Supports", lastName: "Plan Cam Dri", table: 32 },
-];
+        document.addEventListener("DOMContentLoaded", function () {
+            const button = document.getElementById("findTableBtn");
+            button.addEventListener("click", function () {
+                const input = document.getElementById("firstNameInput").value.trim().toLowerCase();
+                const resultsDiv = document.getElementById("results");
+                resultsDiv.innerHTML = "";
 
-// JSON positions
-const savedPositions = {
-"1":{"left":"10%","top":"10%"}, "2":{"left":"110px","top":"10%"}, "3":{"left":"195px","top":"145px"},
-"4":{"left":"230px","top":"145px"}, "5":{"left":"80%","top":"10%"}, "6":{"left":"90%","top":"10%"},
-"7":{"left":"10%","top":"30%"}, "8":{"left":"20%","top":"30%"}, "9":{"left":"30%","top":"30%"},
-"10":{"left":"70%","top":"30%"}, "11":{"left":"80%","top":"30%"}, "12":{"left":"90%","top":"30%"},
-"13":{"left":"10%","top":"50%"}, "14":{"left":"20%","top":"50%"}, "15":{"left":"30%","top":"50%"},
-"16":{"left":"70%","top":"50%"}, "17":{"left":"80%","top":"50%"}, "18":{"left":"90%","top":"50%"},
-"19":{"left":"10%","top":"70%"}, "20":{"left":"20%","top":"70%"}, "21":{"left":"30%","top":"70%"},
-"22":{"left":"80%","top":"90%"}, "23":{"left":"80%","top":"70%"}, "24":{"left":"90%","top":"70%"},
-"25":{"left":"10%","top":"90%"}, "26":{"left":"20%","top":"90%"}, "27":{"left":"30%","top":"90%"},
-"28":{"left":"40%","top":"90%"}, "29":{"left":"50%","top":"88%"}, "30":{"left":"60%","top":"88%"},
-"31":{"left":"70%","top":"90%"}, "BAND":{"left":"70%","top":"70%"}, "Help":{"left":"90%","top":"90%"}
+                if (!input) {
+                    resultsDiv.textContent = "Please enter your first name.";
+                    return;
+                }
+
+                const matches = guests.filter(guest => guest.firstName.toLowerCase() === input);
+
+                if (matches.length === 0) {
+                    resultsDiv.textContent = "No guest found with that first name.";
+                } else {
+                    const list = document.createElement("ul");
+                    matches.forEach(guest => {
+                        const item = document.createElement("li");
+                        item.textContent = `${guest.firstName} ${guest.lastName} - Table ${guest.table}`;
+                        list.appendChild(item);
+                       // RESET all circles to blue and stop blinking
+const circles = document.querySelectorAll(".circle");
+circles.forEach(circle => {
+    circle.style.backgroundColor = "blue";
+    circle.classList.remove("blink");
+});
+
+// HIGHLIGHT and make blink
+circles.forEach(circle => {
+    if (circle.textContent == guest.table) {
+        circle.classList.add("blink");
+    }
+});
+                    });
+                    resultsDiv.appendChild(list);
+                }
+            });
+        });
+    </script>
+     <script>
+        // Mapping: original number → new label
+
+
+        const rows = 5;
+        const cols = 9;
+        const gapX = 50;  // half the horizontal gap
+        const gapY = 59;  // half the vertical gap
+
+        const offsetX = 40;
+        const offsetY = 40;
+
+        let tableNumber = 1;
+        const container = document.getElementById("circlesContainer");
+        
+const tableMap = {
+  22: "BAND",     // Change 4 → 33
+  33: "Help",    // Example: 5 → VIP
+  32: "22"  // Example: 10 → Bride
 };
+        for (let row = 1; row <= rows; row++) {
+            for (let col = 1; col <= cols; col++) {
+                if (row < 5 && (col === 4 || col === 5 || col === 6)) continue;
+                const circle = document.createElement("div");
+                circle.classList.add("circle");
+               let label = tableMap[tableNumber] || tableNumber;
+                circle.textContent = label;
+                tableNumber++;
 
-const container = document.getElementById("circlesContainer");
-const tableMap = {}; // optional mapping of table numbers to labels
+                // Calculate positions as percentages (so they scale with image)
+let margin = 10; // percent inward from each edge
+let leftPercent = margin + ((col - 1) / (cols - 1)) * (100 - 2 * margin);
+let topPercent  = margin + ((row - 1) / (rows - 1)) * (100 - 2 * margin);
 
-// Create circles
-for (let key in savedPositions) {
-    const circle = document.createElement("div");
-    circle.classList.add("circle");
-    circle.textContent = key;
-    circle.style.left = savedPositions[key].left;
-    circle.style.top = savedPositions[key].top;
-    container.appendChild(circle);
-}
+circle.style.left = leftPercent + "%";
+circle.style.top  = topPercent + "%";
+                container.appendChild(circle);
+            }
+        }
+        // Move tables up and left
+const allCircles = container.querySelectorAll(".circle");
 
-// Editing mode
-let editingMode = true;
+allCircles.forEach(circle => {
+  switch(circle.textContent) {
+    case "1":
+      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";  // adjust up/down
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%"; // adjust left/right
+      break;
+    case "2":
+      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      break;
+    case "3":
+      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
+      circle.style.left = (parseFloat(circle.style.left) + 10) + "%";
+      break;
+    // …
+    case "4":
+      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%"; // moved up
+      circle.style.left = (parseFloat(circle.style.left) - 10) + "%";
+      break;
+    case "29":
+      circle.style.top  = (parseFloat(circle.style.top) - 2) + "%";
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      break;
+    case "30":
+      circle.style.top  = (parseFloat(circle.style.top) - 2) + "%";
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      break;
+    case "BAND":
+      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      break;
+    case "Help":
+      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
+      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      break;
+  }
+});
+
+      
+        let editingMode = true; // set false for normal visitors
 let selectedCircle = null;
 
 container.querySelectorAll(".circle").forEach(circle => {
-    circle.addEventListener("click", () => {
-        if(!editingMode) return;
-        if (selectedCircle) selectedCircle.classList.remove("selected");
-        selectedCircle = circle;
-        selectedCircle.classList.add("selected");
+  circle.addEventListener("click", () => {
+    if(!editingMode) return;
+    if (selectedCircle) selectedCircle.classList.remove("selected");
+    selectedCircle = circle;
+    selectedCircle.classList.add("selected");
+  });
+});
+
+document.addEventListener("keydown", (e) => {
+  if (!editingMode || !selectedCircle) return;
+  let top = parseInt(selectedCircle.style.top);
+  let left = parseInt(selectedCircle.style.left);
+  switch(e.key) {
+    case "ArrowUp": selectedCircle.style.top = (top - 5) + "px"; break;
+    case "ArrowDown": selectedCircle.style.top = (top + 5) + "px"; break;
+    case "ArrowLeft": selectedCircle.style.left = (left - 5) + "px"; break;
+    case "ArrowRight": selectedCircle.style.left = (left + 5) + "px"; break;
+ }
+  
+});
+         
+    document.getElementById("findCarParkBtn").addEventListener("click", function () {
+        // Replace this URL with the actual car park location link
+        window.open("https://maps.app.goo.gl/rW5yMQzisJt6ZzSM8", "_blank");
     });
-});
-
-// Arrow key movement (percentage)
-document.addEventListener("keydown", e => {
-    if (!editingMode || !selectedCircle) return;
-    let top = parseFloat(selectedCircle.style.top);
-    let left = parseFloat(selectedCircle.style.left);
-    const step = 1; // percent
-
-    switch(e.key) {
-        case "ArrowUp": selectedCircle.style.top = Math.max(0, top - step) + "%"; break;
-        case "ArrowDown": selectedCircle.style.top = Math.min(100, top + step) + "%"; break;
-        case "ArrowLeft": selectedCircle.style.left = Math.max(0, left - step) + "%"; break;
-        case "ArrowRight": selectedCircle.style.left = Math.min(100, left + step) + "%"; break;
-    }
-});
-
-// Find table button
-document.getElementById("findTableBtn").addEventListener("click", () => {
-    const input = document.getElementById("firstNameInput").value.trim().toLowerCase();
-    const resultsDiv = document.getElementById("results");
-    resultsDiv.innerHTML = "";
-
-    if(!input){ resultsDiv.textContent = "Please enter your first name."; return; }
-
-    const matches = guests.filter(g => g.firstName.toLowerCase() === input);
-
-    if(matches.length === 0) {
-        resultsDiv.textContent = "No guest found with that first name.";
-        return;
-    }
-
-    // Reset circles
-    const circles = document.querySelectorAll(".circle");
-    circles.forEach(c => { c.classList.remove("blink"); c.style.backgroundColor="blue"; });
-
-    const list = document.createElement("ul");
-    matches.forEach(g => {
-        const item = document.createElement("li");
-        item.textContent = `${g.firstName} ${g.lastName} - Table ${g.table}`;
-        list.appendChild(item);
-
-        circles.forEach(c => {
-            if(c.textContent == g.table) c.classList.add("blink");
-        });
-    });
-    resultsDiv.appendChild(list);
-});
-
-// Car park button
-document.getElementById("findCarParkBtn").addEventListener("click", () => {
-    window.open("https://maps.app.goo.gl/rW5yMQzisJt6ZzSM8", "_blank");
-});
-
-// Save positions
-function savePositions() {
-    const positions = {};
-    document.querySelectorAll(".circle").forEach(c => {
-        positions[c.textContent] = { left: c.style.left, top: c.style.top };
-    });
-    localStorage.setItem("circlePositions", JSON.stringify(positions));
-    console.log("Positions saved:", positions);
+           function exportPositions() {
+  const positions = {};
+  document.querySelectorAll(".circle").forEach(c => {
+      positions[c.textContent] = { left: c.style.left, top: c.style.top };
+  });
+  console.log(JSON.stringify(positions, null, 2));
 }
-
-// Load positions from localStorage
-function loadPositions() {
-    const stored = JSON.parse(localStorage.getItem("circlePositions") || "{}");
-    if(!stored) return;
-    document.querySelectorAll(".circle").forEach(c => {
-        if(stored[c.textContent]){
-            c.style.left = stored[c.textContent].left;
-            c.style.top = stored[c.textContent].top;
-        }
-    });
-}
-document.addEventListener("DOMContentLoaded", loadPositions);
 
 </script>
 </body>
