@@ -370,8 +370,8 @@ const tableMap = {
 
                 // Calculate positions as percentages (so they scale with image)
 let margin = 20; // percent inward from each edge
-let leftPercent = margin + ((col - 1) / (cols - 1)) * (100 - 2 * margin);
-let topPercent  = margin + ((row - 1) / (rows - 1)) * (100 - 2 * margin);
+let leftPercent = margin + ((col - 1) / (cols - 1)) * (100 - 10 * margin);
+let topPercent  = margin + ((row - 1) / (rows - 1)) * (100 - 10 * margin);
 
 circle.style.left = leftPercent + "%";
 circle.style.top  = topPercent + "%";
