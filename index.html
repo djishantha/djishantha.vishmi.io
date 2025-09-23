@@ -441,15 +441,29 @@ allCircles.forEach(circle => {
 });
 
       
-        let editingMode = true; // set false for normal visitors
-let selectedCircle = null;
+      let editingMode = true; // toggle off for visitors
+let selectedCircles = new Set();
 
 container.querySelectorAll(".circle").forEach(circle => {
-  circle.addEventListener("click", () => {
-    if(!editingMode) return;
-    if (selectedCircle) selectedCircle.classList.remove("selected");
-    selectedCircle = circle;
-    selectedCircle.classList.add("selected");
+  circle.addEventListener("click", (e) => {
+    if (!editingMode) return;
+
+    if (e.shiftKey) {
+      // add/remove circle to group selection
+      if (selectedCircles.has(circle)) {
+        selectedCircles.delete(circle);
+        circle.classList.remove("selected");
+      } else {
+        selectedCircles.add(circle);
+        circle.classList.add("selected");
+      }
+    } else {
+      // single select
+      selectedCircles.forEach(c => c.classList.remove("selected"));
+      selectedCircles.clear();
+      selectedCircles.add(circle);
+      circle.classList.add("selected");
+    }
   });
 });
 
