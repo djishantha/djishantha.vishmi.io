@@ -379,43 +379,64 @@ circle.style.top  = topPercent + "%";
             }
         }
         // Move tables up and left
+//const allCircles = container.querySelectorAll(".circle");
+
+//allCircles.forEach(circle => {
+ // switch(circle.textContent) {
+    //case "1":
+      //circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";  // adjust up/down
+      //circle.style.left = (parseFloat(circle.style.left) + 0) + "%"; // adjust left/right
+      //break;
+    //case "2":
+      //circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
+      //circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      //break;
+     // }
+//});
+// Apply saved positions from exportPositions()
+const savedPositions = {
+  "1": { "left": "6.00%", "top": "4.00%" },
+  "2": { "left": "16.00%", "top": "4.00%" },
+  "3": { "left": "38.73%", "top": "63.23%" },
+  "4": { "left": "47.14%", "top": "63.91%" },
+  "5": { "left": "76.00%", "top": "4.00%" },
+  "6": { "left": "86.00%", "top": "4.00%" },
+  "7": { "left": "6.00%", "top": "24.00%" },
+  "8": { "left": "16.00%", "top": "24.00%" },
+  "9": { "left": "26.00%", "top": "24.00%" },
+  "10": { "left": "66.00%", "top": "24.00%" },
+  "11": { "left": "76.00%", "top": "24.00%" },
+  "12": { "left": "86.00%", "top": "24.00%" },
+  "13": { "left": "6.00%", "top": "44.00%" },
+  "14": { "left": "16.00%", "top": "44.00%" },
+  "15": { "left": "26.00%", "top": "44.00%" },
+  "16": { "left": "66.00%", "top": "44.00%" },
+  "17": { "left": "76.00%", "top": "44.00%" },
+  "18": { "left": "86.00%", "top": "44.00%" },
+  "19": { "left": "6.00%", "top": "64.00%" },
+  "20": { "left": "16.00%", "top": "64.00%" },
+  "21": { "left": "26.00%", "top": "64.00%" },
+  "22": { "left": "76.00%", "top": "84.00%" },
+  "23": { "left": "76.00%", "top": "64.00%" },
+  "24": { "left": "86.00%", "top": "64.00%" },
+  "25": { "left": "6.00%", "top": "84.00%" },
+  "26": { "left": "16.00%", "top": "84.00%" },
+  "27": { "left": "26.00%", "top": "84.00%" },
+  "28": { "left": "36.00%", "top": "84.00%" },
+  "29": { "left": "46.00%", "top": "82.00%" },
+  "30": { "left": "56.00%", "top": "82.00%" },
+  "31": { "left": "66.00%", "top": "84.00%" },
+  "BAND": { "left": "66.00%", "top": "64.00%" },
+  "Help": { "left": "86.00%", "top": "84.00%" }
+};
+
 const allCircles = container.querySelectorAll(".circle");
 
 allCircles.forEach(circle => {
-  switch(circle.textContent) {
-    case "1":
-      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";  // adjust up/down
-      circle.style.left = (parseFloat(circle.style.left) + 0) + "%"; // adjust left/right
-      break;
-    case "2":
-      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
-      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
-      break;
-    case "3":
-      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
-      circle.style.left = (parseFloat(circle.style.left) + 10) + "%";
-      break;
-    // …
-    case "4":
-      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%"; // moved up
-      circle.style.left = (parseFloat(circle.style.left) - 10) + "%";
-      break;
-    case "29":
-      circle.style.top  = (parseFloat(circle.style.top) - 2) + "%";
-      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
-      break;
-    case "30":
-      circle.style.top  = (parseFloat(circle.style.top) - 2) + "%";
-      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
-      break;
-    case "BAND":
-      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
-      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
-      break;
-    case "Help":
-      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
-      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
-      break;
+  const label = circle.textContent;
+  if (savedPositions[label]) {
+    circle.style.left = savedPositions[label].left;
+    circle.style.top = savedPositions[label].top;
   }
 });
 
