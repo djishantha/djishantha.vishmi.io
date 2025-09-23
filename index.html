@@ -435,11 +435,21 @@ h2 {
 
 // Apply saved positions
 document.querySelectorAll(".circle").forEach(circle => {
-  const label = circle.textContent;
-  if (savedPositions[label]) {
-    circle.style.left = savedPositions[label].left;
-    circle.style.top  = savedPositions[label].top;
-  }
+ const label = tableMap[tableNumber] || tableNumber;
+circle.textContent = label;
+
+// Use saved position if available
+if (savedPositions[label]) {
+  circle.style.left = savedPositions[label].left;
+  circle.style.top  = savedPositions[label].top;
+} else {
+  // fallback calculation
+  let leftPercent = margin + ((col - 1) / (cols - 1)) * (100 - 2 * margin);
+  let topPercent  = margin + ((row - 1) / (rows - 1)) * (100 - 2 * margin);
+  circle.style.left = leftPercent + "%";
+  circle.style.top  = topPercent + "%";
+}
+
 });
 
         document.addEventListener("DOMContentLoaded", function () {
