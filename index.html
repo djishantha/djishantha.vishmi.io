@@ -395,139 +395,39 @@ circle.style.top  = topPercent + "%";
 //});
 // Apply saved positions from exportPositions()
 const savedPositions = {
-  "1": {
-    "left": "2.00%",
-    "top": "-1.00%"
-  },
-  "2": {
-    "left": "38.27%",
-    "top": "-1.00%"
-  },
-  "3": {
-    "left": "34.73%",
-    "top": "54.00%"
-  },
-  "4": {
-    "left": "43.14%",
-    "top": "54.00%"
-  },
-  "5": {
-    "left": "50.77%",
-    "top": "-1.00%"
-  },
-  "6": {
-    "left": "82.00%",
-    "top": "-1.00%"
-  },
-  "7": {
-    "left": "2.00%",
-    "top": "15.00%"
-  },
-  "8": {
-    "left": "12.00%",
-    "top": "15.00%"
-  },
-  "9": {
-    "left": "22.00%",
-    "top": "15.00%"
-  },
-  "10": {
-    "left": "62.00%",
-    "top": "15.00%"
-  },
-  "11": {
-    "left": "72.00%",
-    "top": "15.00%"
-  },
-  "12": {
-    "left": "82.00%",
-    "top": "15.00%"
-  },
-  "13": {
-    "left": "2.00%",
-    "top": "35.00%"
-  },
-  "14": {
-    "left": "12.00%",
-    "top": "35.00%"
-  },
-  "15": {
-    "left": "38.27%",
-    "top": "35.00%"
-  },
-  "16": {
-    "left": "54.18%",
-    "top": "35.00%"
-  },
-  "17": {
-    "left": "72.00%",
-    "top": "35.00%"
-  },
-  "18": {
-    "left": "82.00%",
-    "top": "35.00%"
-  },
-  "19": {
-    "left": "2.00%",
-    "top": "55.00%"
-  },
-  "20": {
-    "left": "12.00%",
-    "top": "55.00%"
-  },
-  "21": {
-    "left": "22.00%",
-    "top": "55.00%"
-  },
-  "22": {
-    "left": "79.55%",
-    "top": "80.32%"
-  },
-  "23": {
-    "left": "72.00%",
-    "top": "55.00%"
-  },
-  "24": {
-    "left": "82.00%",
-    "top": "55.00%"
-  },
-  "25": {
-    "left": "8.54%",
-    "top": "80.32%"
-  },
-  "26": {
-    "left": "18.54%",
-    "top": "80.32%"
-  },
-  "27": {
-    "left": "28.54%",
-    "top": "80.32%"
-  },
-  "28": {
-    "left": "38.54%",
-    "top": "80.32%"
-  },
-  "29": {
-    "left": "48.10%",
-    "top": "80.32%"
-  },
-  "30": {
-    "left": "58.54%",
-    "top": "80.32%"
-  },
-  "31": {
-    "left": "69.55%",
-    "top": "80.32%"
-  },
-  "BAND": {
-    "left": "63.96%",
-    "top": "-1.00%"
-  },
-  "Help": {
-    "left": "18.96%",
-    "top": "-1.00%"
-  }
-
+  "1": { "left": "2.00%", "top": "2.00%" },
+  "2": { "left": "38.27%", "top": "2.00%" },
+  "3": { "left": "34.73%", "top": "57.00%" },
+  "4": { "left": "43.14%", "top": "57.00%" },
+  "5": { "left": "50.77%", "top": "2.00%" },
+  "6": { "left": "82.00%", "top": "2.00%" },
+  "7": { "left": "2.00%", "top": "18.00%" },
+  "8": { "left": "12.00%", "top": "18.00%" },
+  "9": { "left": "22.00%", "top": "18.00%" },
+  "10": { "left": "62.00%", "top": "18.00%" },
+  "11": { "left": "72.00%", "top": "18.00%" },
+  "12": { "left": "82.00%", "top": "18.00%" },
+  "13": { "left": "2.00%", "top": "38.00%" },
+  "14": { "left": "12.00%", "top": "38.00%" },
+  "15": { "left": "38.27%", "top": "38.00%" },
+  "16": { "left": "54.18%", "top": "38.00%" },
+  "17": { "left": "72.00%", "top": "38.00%" },
+  "18": { "left": "82.00%", "top": "38.00%" },
+  "19": { "left": "2.00%", "top": "58.00%" },
+  "20": { "left": "12.00%", "top": "58.00%" },
+  "21": { "left": "22.00%", "top": "58.00%" },
+  "22": { "left": "72.00%", "top": "78.00%" },
+  "23": { "left": "72.00%", "top": "58.00%" },
+  "24": { "left": "82.00%", "top": "58.00%" },
+  "25": { "left": "2.00%", "top": "78.00%" },
+  "26": { "left": "12.00%", "top": "78.00%" },
+  "27": { "left": "22.00%", "top": "78.00%" },
+  "28": { "left": "32.00%", "top": "78.00%" },
+  "29": { "left": "42.00%", "top": "78.00%" },
+  "30": { "left": "52.00%", "top": "78.00%" },
+  "31": { "left": "62.00%", "top": "78.00%" },
+  "BAND": { "left": "63.96%", "top": "2.00%" },
+  "Help": { "left": "18.96%", "top": "2.00%" }
 };
 
 const allCircles = container.querySelectorAll(".circle");
@@ -535,70 +435,35 @@ const allCircles = container.querySelectorAll(".circle");
 allCircles.forEach(circle => {
   const label = circle.textContent;
   if (savedPositions[label]) {
-    // get saved percentages
-    let leftPercent = parseFloat(savedPositions[label].left);
-    let topPercent  = parseFloat(savedPositions[label].top);
-
-    // clamp inside the image with offset
-    let offset = 2; // percent inward
-    leftPercent = Math.max(offset, Math.min(100 - offset, leftPercent));
-    topPercent  = Math.max(offset, Math.min(100 - offset, topPercent));
-
-    // apply to circle
-    circle.style.left = leftPercent + "%";
-    circle.style.top  = topPercent + "%";
+    circle.style.left = savedPositions[label].left;
+    circle.style.top = savedPositions[label].top;
   }
 });
 
       
-      let editingMode = true; // toggle off for visitors
-let selectedCircles = new Set();
+        let editingMode = true; // set false for normal visitors
+let selectedCircle = null;
 
 container.querySelectorAll(".circle").forEach(circle => {
-  circle.addEventListener("click", (e) => {
-    if (!editingMode) return;
-
-    if (e.shiftKey) {
-      // add/remove circle to group selection
-      if (selectedCircles.has(circle)) {
-        selectedCircles.delete(circle);
-        circle.classList.remove("selected");
-      } else {
-        selectedCircles.add(circle);
-        circle.classList.add("selected");
-      }
-    } else {
-      // single select
-      selectedCircles.forEach(c => c.classList.remove("selected"));
-      selectedCircles.clear();
-      selectedCircles.add(circle);
-      circle.classList.add("selected");
-    }
+  circle.addEventListener("click", () => {
+    if(!editingMode) return;
+    if (selectedCircle) selectedCircle.classList.remove("selected");
+    selectedCircle = circle;
+    selectedCircle.classList.add("selected");
   });
 });
 
 document.addEventListener("keydown", (e) => {
-  if (!editingMode || selectedCircles.size === 0) return;
-
-  let step = 1; // move in % units
-  let dx = 0, dy = 0;
-
-  switch (e.key) {
-    case "ArrowUp":    dy = -step; break;
-    case "ArrowDown":  dy = step;  break;
-    case "ArrowLeft":  dx = -step; break;
-    case "ArrowRight": dx = step;  break;
-    default: return; // ignore other keys
-  }
-
-  selectedCircles.forEach(c => {
-    let left = parseFloat(c.style.left) || 0;
-    let top = parseFloat(c.style.top) || 0;
-    c.style.left = (left + dx) + "%";
-    c.style.top = (top + dy) + "%";
-  });
-
-  e.preventDefault(); // avoid page scroll
+  if (!editingMode || !selectedCircle) return;
+  let top = parseInt(selectedCircle.style.top);
+  let left = parseInt(selectedCircle.style.left);
+  switch(e.key) {
+    case "ArrowUp": selectedCircle.style.top = (top - 5) + "px"; break;
+    case "ArrowDown": selectedCircle.style.top = (top + 5) + "px"; break;
+    case "ArrowLeft": selectedCircle.style.left = (left - 5) + "px"; break;
+    case "ArrowRight": selectedCircle.style.left = (left + 5) + "px"; break;
+ }
+  
 });
          
     document.getElementById("findCarParkBtn").addEventListener("click", function () {
