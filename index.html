@@ -454,45 +454,51 @@ if (savedPositions[label]) {
 
 });
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const button = document.getElementById("findTableBtn");
-            button.addEventListener("click", function () {
-                const input = document.getElementById("firstNameInput").value.trim().toLowerCase();
-                const resultsDiv = document.getElementById("results");
-                resultsDiv.innerHTML = "";
+     button.addEventListener("click", function () {
+    const input = document.getElementById("firstNameInput").value.trim().toLowerCase();
+    const resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = "";
 
-                if (!input) {
-                    resultsDiv.textContent = "Please enter your first name.";
-                    return;
-                }
+    if (!input) {
+        resultsDiv.textContent = "Please enter your first name.";
+        return;
+    }
 
-                const matches = guests.filter(guest => guest.firstName.toLowerCase() === input);
+    const matches = guests.filter(guest => guest.firstName.toLowerCase() === input);
 
-                if (matches.length === 0) {
-                    resultsDiv.textContent = "No guest found with that first name.";
-                } else {
-                    const list = document.createElement("ul");
-                    matches.forEach(guest => {
-                        const item = document.createElement("li");
-                        item.textContent = `${guest.firstName} ${guest.lastName} - Table ${guest.table}`;
-                        list.appendChild(item);
-                       // RESET all circles to blue and stop blinking
-const circles = document.querySelectorAll(".circle");
-circles.forEach(circle => {
-    circle.style.backgroundColor = "blue";
-    circle.classList.remove("blink");
-});
+    if (matches.length === 0) {
+        resultsDiv.textContent = "No guest found with that first name.";
+    } else {
+        const list = document.createElement("ul");
+        
+        // ✅ Reset all blinking before showing new results
+        const circles = document.querySelectorAll(".circle");
+        circles.forEach(circle => {
+            circle.classList.remove("blink");
+        });
 
-// HIGHLIGHT and make blink
-circles.forEach(circle => {
-    if (circle.textContent == guest.table) {
-        circle.classList.add("blink");
+        // ✅ Collect all matched tables
+        const matchedTables = new Set();
+
+        matches.forEach(guest => {
+            const item = document.createElement("li");
+            item.textContent = `${guest.firstName} ${guest.lastName} - Table ${guest.table}`;
+            list.appendChild(item);
+            matchedTables.add(guest.table.toString()); // Add table number as string
+        });
+
+        // ✅ Highlight/blink all matching tables
+        circles.forEach(circle => {
+            if (matchedTables.has(circle.textContent)) {
+                circle.classList.add("blink");
+            }
+        });
+
+        resultsDiv.appendChild(list);
     }
 });
-                    });
-                    resultsDiv.appendChild(list);
-                }
-            });
+
+           
         });
     </script>
      <script>
