@@ -513,7 +513,26 @@ const tableMap = {
   33: "Help",    // Example: 5 → VIP
   32: "22"  // Example: 10 → Bride
 };
-      for (let row = 1; row <= rows; row++) { for (let col = 1; col <= cols; col++) { if (row < 5 && (col === 4 || col === 5 || col === 6)) continue; const circle = document.createElement("div"); circle.classList.add("circle"); let label = tableMap[tableNumber] || tableNumber; circle.textContent = label; tableNumber++;
+      for (let row = 1; row <= rows; row++) {
+  for (let col = 1; col <= cols; col++) {
+    if (row < 5 && (col === 4 || col === 5 || col === 6)) continue; // keep your existing skips
+    const circle = document.createElement("div");
+    circle.classList.add("circle");
+
+    let label = tableMap[tableNumber] || tableNumber;
+    circle.textContent = label;
+
+    // ✅ Only use savedPositions, ignore default grid
+    if (savedPositions[label]) {
+      circle.style.left = savedPositions[label].left;
+      circle.style.top  = savedPositions[label].top;
+    }
+
+    container.appendChild(circle);
+    tableNumber++;
+  }
+}
+
 
                 // Calculate positions as percentages (so they scale with image)
 let margin = 10; // percent inward from each edge
@@ -533,45 +552,26 @@ circle.style.top  = topPercent + "%";
   }
 });
         // Move tables up and left
-const allCircles = container.querySelectorAll(".circle");
+//const allCircles = container.querySelectorAll(".circle");
 
-allCircles.forEach(circle => {
-  switch(circle.textContent) {
-    case "1":
-      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";  // adjust up/down
-      circle.style.left = (parseFloat(circle.style.left) + 0) + "%"; // adjust left/right
-      break;
-    case "2":
-      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
-      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
-      break;
-    case "3":
-      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
-      circle.style.left = (parseFloat(circle.style.left) + 10) + "%";
-      break;
-    // …
-    case "4":
-      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%"; // moved up
-      circle.style.left = (parseFloat(circle.style.left) - 10) + "%";
-      break;
-    case "29":
-      circle.style.top  = (parseFloat(circle.style.top) - 2) + "%";
-      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
-      break;
-    case "30":
-      circle.style.top  = (parseFloat(circle.style.top) - 2) + "%";
-      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
-      break;
-    case "BAND":
-      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
-      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
-      break;
-    case "Help":
-      circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
-      circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
-      break;
-  }
-});
+//allCircles.forEach(circle => {
+ // switch(circle.textContent) {
+   // case "1":
+    //  circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";  // adjust up/down
+     // circle.style.left = (parseFloat(circle.style.left) + 0) + "%"; // adjust left/right
+    //  break;
+    //case "2":
+      //circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
+      //circle.style.left = (parseFloat(circle.style.left) + 0) + "%";
+      //break;
+   // case "3":
+     // circle.style.top  = (parseFloat(circle.style.top) - 0) + "%";
+      //circle.style.left = (parseFloat(circle.style.left) + 10) + "%";
+     // break;
+    
+    
+ // }
+//});
 
       
         let editingMode = true; // set false for normal visitors
