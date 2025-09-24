@@ -490,6 +490,10 @@ circles.forEach(circle => {
 });
                     });
                     resultsDiv.appendChild(list);
+                    circles.forEach(circle => {
+                const label = circle.textContent;
+                if (matchedTables.has(label)) {
+                    circle.classList.add("blink");
                 }
             });
         });
