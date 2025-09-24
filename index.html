@@ -559,32 +559,47 @@ allCircles.forEach(circle => {
   }
 });
 
-      
-        let editingMode = true; // set false for normal visitors
-let selectedCircle = null;
+    let editingMode = true; // set false for normal visitors
+let selectedCircles = new Set(); // store multiple selected circles
 
 container.querySelectorAll(".circle").forEach(circle => {
-  circle.addEventListener("click", () => {
-    if(!editingMode) return;
-    if (selectedCircle) selectedCircle.classList.remove("selected");
-    selectedCircle = circle;
-    selectedCircle.classList.add("selected");
+  circle.addEventListener("click", (e) => {
+    if (!editingMode) return;
+
+    if (e.shiftKey) {
+      // toggle selection if shift is pressed
+      if (selectedCircles.has(circle)) {
+        circle.classList.remove("selected");
+        selectedCircles.delete(circle);
+      } else {
+        circle.classList.add("selected");
+        selectedCircles.add(circle);
+      }
+    } else {
+      // normal click → clear all and select only this one
+      selectedCircles.forEach(c => c.classList.remove("selected"));
+      selectedCircles.clear();
+      circle.classList.add("selected");
+      selectedCircles.add(circle);
+    }
   });
 });
-
 document.addEventListener("keydown", (e) => {
-  if (!editingMode || !selectedCircle) return;
-let top = parseFloat(selectedCircle.style.top);
-let left = parseFloat(selectedCircle.style.left);
+  if (!editingMode || selectedCircles.size === 0) return;
 
-switch(e.key) {
-    case "ArrowUp": selectedCircle.style.top = (top - 2) + "%"; break;
-    case "ArrowDown": selectedCircle.style.top = (top + 2) + "%"; break;
-    case "ArrowLeft": selectedCircle.style.left = (left - 2) + "%"; break;
-    case "ArrowRight": selectedCircle.style.left = (left + 2) + "%"; break;
-} 
+  selectedCircles.forEach(circle => {
+    let top = parseFloat(circle.style.top);
+    let left = parseFloat(circle.style.left);
+
+    switch(e.key) {
+      case "ArrowUp": circle.style.top = (top - 2) + "%"; break;
+      case "ArrowDown": circle.style.top = (top + 2) + "%"; break;
+      case "ArrowLeft": circle.style.left = (left - 2) + "%"; break;
+      case "ArrowRight": circle.style.left = (left + 2) + "%"; break;
+    }
+  });
 });
-         
+        
     document.getElementById("findCarParkBtn").addEventListener("click", function () {
         // Replace this URL with the actual car park location link
         window.open("https://maps.app.goo.gl/rW5yMQzisJt6ZzSM8", "_blank");
