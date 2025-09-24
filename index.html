@@ -525,6 +525,13 @@ circle.style.top  = topPercent + "%";
                 container.appendChild(circle);
             }
         }
+         document.querySelectorAll(".circle").forEach(circle => {
+  const label = circle.textContent;
+  if (savedPositions[label]) {
+    circle.style.left = savedPositions[label].left;
+    circle.style.top  = savedPositions[label].top;
+  }
+});
         // Move tables up and left
 const allCircles = container.querySelectorAll(".circle");
 
