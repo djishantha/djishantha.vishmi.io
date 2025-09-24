@@ -300,73 +300,73 @@ h2 {
 
         const savedPositions = {
 
-"1": {
+ "1": {
     "left": "10%",
     "top": "12%"
   },
   "2": {
-    "left": "10%",
-    "top": "30%"
+    "left": "20%",
+    "top": "12%"
   },
   "3": {
-    "left": "10%",
-    "top": "50%"
+    "left": "32%",
+    "top": "12%"
   },
   "4": {
     "left": "70%",
-    "top": "12%"
+    "top": "10%"
   },
   "5": {
-    "left": "70%",
-    "top": "30%"
+    "left": "80%",
+    "top": "10%"
   },
   "6": {
-    "left": "70%",
-    "top": "50%"
+    "left": "90%",
+    "top": "10%"
   },
   "7": {
-    "left": "22%",
-    "top": "14%"
+    "left": "10%",
+    "top": "30%"
   },
   "8": {
     "left": "20%",
     "top": "30%"
   },
   "9": {
-    "left": "20%",
-    "top": "50%"
+    "left": "30%",
+    "top": "30%"
   },
   "10": {
-    "left": "80%",
-    "top": "12%"
+    "left": "70%",
+    "top": "30%"
   },
   "11": {
     "left": "80%",
     "top": "30%"
   },
   "12": {
-    "left": "80%",
-    "top": "50%"
+    "left": "90%",
+    "top": "30%"
   },
   "13": {
-    "left": "32%",
-    "top": "14%"
+    "left": "10%",
+    "top": "50%"
   },
   "14": {
-    "left": "32%",
-    "top": "32%"
+    "left": "20%",
+    "top": "50%"
   },
   "15": {
     "left": "30%",
     "top": "50%"
   },
   "16": {
-    "left": "90%",
-    "top": "12%"
+    "left": "70%",
+    "top": "50%"
   },
   "17": {
-    "left": "90%",
-    "top": "30%"
+    "left": "80%",
+    "top": "50%"
   },
   "18": {
     "left": "90%",
@@ -432,7 +432,6 @@ h2 {
     "left": "90%",
     "top": "90%"
   }
-
 };
 
 // Apply saved positions
@@ -454,51 +453,45 @@ if (savedPositions[label]) {
 
 });
 
-     button.addEventListener("click", function () {
-    const input = document.getElementById("firstNameInput").value.trim().toLowerCase();
-    const resultsDiv = document.getElementById("results");
-    resultsDiv.innerHTML = "";
+        document.addEventListener("DOMContentLoaded", function () {
+            const button = document.getElementById("findTableBtn");
+            button.addEventListener("click", function () {
+                const input = document.getElementById("firstNameInput").value.trim().toLowerCase();
+                const resultsDiv = document.getElementById("results");
+                resultsDiv.innerHTML = "";
 
-    if (!input) {
-        resultsDiv.textContent = "Please enter your first name.";
-        return;
-    }
+                if (!input) {
+                    resultsDiv.textContent = "Please enter your first name.";
+                    return;
+                }
 
-    const matches = guests.filter(guest => guest.firstName.toLowerCase() === input);
+                const matches = guests.filter(guest => guest.firstName.toLowerCase() === input);
 
-    if (matches.length === 0) {
-        resultsDiv.textContent = "No guest found with that first name.";
-    } else {
-        const list = document.createElement("ul");
-        
-        // ✅ Reset all blinking before showing new results
-        const circles = document.querySelectorAll(".circle");
-        circles.forEach(circle => {
-            circle.classList.remove("blink");
-        });
-
-        // ✅ Collect all matched tables
-        const matchedTables = new Set();
-
-        matches.forEach(guest => {
-            const item = document.createElement("li");
-            item.textContent = `${guest.firstName} ${guest.lastName} - Table ${guest.table}`;
-            list.appendChild(item);
-            matchedTables.add(guest.table.toString()); // Add table number as string
-        });
-
-        // ✅ Highlight/blink all matching tables
-        circles.forEach(circle => {
-            if (matchedTables.has(circle.textContent)) {
-                circle.classList.add("blink");
-            }
-        });
-
-        resultsDiv.appendChild(list);
-    }
+                if (matches.length === 0) {
+                    resultsDiv.textContent = "No guest found with that first name.";
+                } else {
+                    const list = document.createElement("ul");
+                    matches.forEach(guest => {
+                        const item = document.createElement("li");
+                        item.textContent = `${guest.firstName} ${guest.lastName} - Table ${guest.table}`;
+                        list.appendChild(item);
+                       // RESET all circles to blue and stop blinking
+const circles = document.querySelectorAll(".circle");
+circles.forEach(circle => {
+    circle.style.backgroundColor = "blue";
+    circle.classList.remove("blink");
 });
 
-           
+// HIGHLIGHT and make blink
+circles.forEach(circle => {
+    if (circle.textContent == guest.table) {
+        circle.classList.add("blink");
+    }
+});
+                    });
+                    resultsDiv.appendChild(list);
+                }
+            });
         });
     </script>
      <script>
