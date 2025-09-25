@@ -498,13 +498,21 @@ document.addEventListener("DOMContentLoaded", function () {
                    if (circle.textContent == guest.table) circle.classList.add("blink");
                 });
 
-                // SPEAK greeting
-                const message = `Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table number is ${guest.table}. Your presence here today is very important to us. Thank you.`;
-                speechSynthesis.cancel(); // stop previous speech if any
-                const utterance = new SpeechSynthesisUtterance(message);
-                utterance.rate = 0.95;
-                utterance.pitch = 1;
-                speechSynthesis.speak(utterance);
+               // SPEAK greeting with female voice
+const message = `Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table is number ${guest.table}. Your presence here today is very important to us. Thank you.`;
+speechSynthesis.cancel(); // stop any previous speech
+
+const utterance = new SpeechSynthesisUtterance(message);
+utterance.rate = 0.95;
+utterance.pitch = 1;
+
+// Select a female voice (first available one)
+const voices = speechSynthesis.getVoices();
+const femaleVoice = voices.find(voice => voice.name.toLowerCase().includes("female") || voice.name.toLowerCase().includes("zira") || voice.name.toLowerCase().includes("susan")); 
+// fallback to default if not found
+if (femaleVoice) utterance.voice = femaleVoice;
+
+speechSynthesis.speak(utterance);
             });
 
             resultsDiv.appendChild(list);
