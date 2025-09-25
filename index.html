@@ -494,12 +494,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 
                 // HIGHLIGHT and make blink for each matching table
                 circles.forEach(circle => {
-                    if (circle.textContent == guest.table) {
-                        circle.classList.add("blink");
-                    }
+                   if (circle.textContent == guest.table) circle.classList.add("blink");
                 });
+
+                // SPEAK greeting
+                const message = `Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table number is ${guest.table}. Your presence here today is very important to us. Thank you.`;
+                speechSynthesis.cancel(); // stop previous speech if any
+                const utterance = new SpeechSynthesisUtterance(message);
+                utterance.rate = 0.95;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
             });
-            
+
             resultsDiv.appendChild(list);
         }
     });
