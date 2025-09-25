@@ -521,6 +521,14 @@ speechSynthesis.speak(utterance);
 });
        
     </script>
+    <script>
+window.speechSynthesis.onvoiceschanged = () => {
+    // voices are now loaded
+    console.log("Voices loaded:", speechSynthesis.getVoices());
+};
+
+</script>
+
      <script>
         // Mapping: original number → new label
 
