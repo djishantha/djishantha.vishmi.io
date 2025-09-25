@@ -499,7 +499,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                // SPEAK greeting with female voice
-const message = `Arubowan, Wanakkam, Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table is number ${guest.table}. Your presence here today is very important to us. Thank you.`;
+const message = `Arubowan Wanakkam Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table is number ${guest.table}. Your presence here today is very important to us. Thank you.`;
 speechSynthesis.cancel(); // stop any previous speech
 
 const utterance = new SpeechSynthesisUtterance(message);
