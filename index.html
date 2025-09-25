@@ -144,6 +144,7 @@ h2 {
         <button id="findCarParkBtn">Find Your Car Park</button>
          <p id="thankYouText">THANK YOU</p>
     </div>
+<audio id="attentionAudio" src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEA..."></audio>
 
     <script>
         const guests = [
@@ -499,20 +500,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                // SPEAK greeting with female voice
-const message = `Arubowan Wanakkam Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table is number ${guest.table}. Your presence here today is very important to us. Thank you.`;
+
+                const recordedAudio = document.getElementById("attentionAudio");
+                const message = `Arubowan Wanakkam Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table is number ${guest.table}. Your presence here today is very important to us. Thank you.`;
 speechSynthesis.cancel(); // stop any previous speech
+recordedAudio.play();
+                
+recordedAudio.onended = () => {
+    const utterance = new SpeechSynthesisUtterance(message);
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
 
-const utterance = new SpeechSynthesisUtterance(message);
-utterance.rate = 0.95;
-utterance.pitch = 1;
+    // Optional: select female voice
+    const voices = speechSynthesis.getVoices();
+    const femaleVoice = voices.find(voice => voice.name.toLowerCase().includes("zira") || voice.name.toLowerCase().includes("samantha"));
+    if (femaleVoice) utterance.voice = femaleVoice;
 
-// Select a female voice (first available one)
-const voices = speechSynthesis.getVoices();
-const femaleVoice = voices.find(voice => voice.name.toLowerCase().includes("female") || voice.name.toLowerCase().includes("zira") || voice.name.toLowerCase().includes("susan")); 
-// fallback to default if not found
-if (femaleVoice) utterance.voice = femaleVoice;
-
-speechSynthesis.speak(utterance);
+    speechSynthesis.speak(utterance);
+};
             });
 
             resultsDiv.appendChild(list);
