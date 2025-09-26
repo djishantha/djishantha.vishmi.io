@@ -402,46 +402,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
                // SPEAK greeting with female voice
 
-              const recordedAudio = document.getElementById("attentionAudio");
-speechSynthesis.cancel();
+             document.getElementById("yourButton").addEventListener("click", () => {
+    const recordedAudio = document.getElementById("attentionAudio");
+    speechSynthesis.cancel();
 
-// Play welcome.mp3 first
-recordedAudio.play();
+    // Play the audio first
+    recordedAudio.play();
 
-// Ensure voices are loaded before using them
-recordedAudio.onended = () => {
-    // Wait until voices are available
-    const speakAfterVoicesLoaded = () => {
-        const voices = speechSynthesis.getVoices();
-        if (!voices.length) {
-            // Try again shortly if voices not yet loaded
-            return setTimeout(speakAfterVoicesLoaded, 100);
-        }
-
+    recordedAudio.onended = () => {
         const message = `Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table is number ${guest.table}. Your presence here today is very important to us. Thank you.`;
-        const utterance = new SpeechSynthesisUtterance(message);
-        utterance.rate = 0.95;
-        utterance.pitch = 1;
 
-        const femaleVoice = voices.find(v =>
-            v.name.toLowerCase().includes("zira") ||
-            v.name.toLowerCase().includes("samantha") ||
-            v.name.toLowerCase().includes("female")
-        );
-        if (femaleVoice) utterance.voice = femaleVoice;
+        const speak = () => {
+            const voices = speechSynthesis.getVoices();
+            if (!voices.length) {
+                return setTimeout(speak, 100);
+            }
 
-        speechSynthesis.speak(utterance);
+            const utterance = new SpeechSynthesisUtterance(message);
+            utterance.rate = 0.95;
+            utterance.pitch = 1;
+            const femaleVoice = voices.find(v =>
+                v.name.toLowerCase().includes("zira") ||
+                v.name.toLowerCase().includes("samantha") ||
+                v.name.toLowerCase().includes("female")
+            );
+            if (femaleVoice) utterance.voice = femaleVoice;
+            speechSynthesis.speak(utterance);
+        };
+
+        speak();
     };
-
-    speakAfterVoicesLoaded();
-};
-
-            });
-
-            resultsDiv.appendChild(list);
-        }
-    });
 });
+
        
     </script>
     <script>
