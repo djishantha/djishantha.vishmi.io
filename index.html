@@ -144,7 +144,6 @@ h2 {
         <button id="findCarParkBtn">Find Your Car Park</button>
          <p id="thankYouText">THANK YOU</p>
     </div>
-<audio id="attentionAudio" src="welcome.mp3"></audio>
 
     <script>
         const guests = [
@@ -499,20 +498,13 @@ document.addEventListener("DOMContentLoaded", function () {
                    if (circle.textContent == guest.table) circle.classList.add("blink");
                 });
 
-               // SPEAK greeting with female voice
-
-               const recordedAudio = document.getElementById("attentionAudio");
-        speechSynthesis.cancel();
-        recordedAudio.play();
-        recordedAudio.onended = () => {
-            const message = `Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table is number ${guest.table}. Your presence here today is very important to us. Thank you.`;
-            const utterance = new SpeechSynthesisUtterance(message);
-            utterance.rate = 0.95; utterance.pitch = 1;
-            const voices = speechSynthesis.getVoices();
-            const femaleVoice = voices.find(v => v.name.toLowerCase().includes("zira") || v.name.toLowerCase().includes("samantha"));
-            if(femaleVoice) utterance.voice = femaleVoice;
-            speechSynthesis.speak(utterance);
-};
+                // SPEAK greeting
+                const message = `Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table number is ${guest.table}. Your presence here today is very important to us. Thank you.`;
+                speechSynthesis.cancel(); // stop previous speech if any
+                const utterance = new SpeechSynthesisUtterance(message);
+                utterance.rate = 0.95;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
             });
 
             resultsDiv.appendChild(list);
@@ -521,14 +513,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
        
     </script>
-    <script>
-window.speechSynthesis.onvoiceschanged = () => {
-    // voices are now loaded
-    console.log("Voices loaded:", speechSynthesis.getVoices());
-};
-
-</script>
-
      <script>
         // Mapping: original number → new label
 
