@@ -402,38 +402,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
                // SPEAK greeting with female voice
 
-             document.getElementById("yourButton").addEventListener("click", () => {
+             document.getElementById("findTableButton").addEventListener("click", () => {
     const recordedAudio = document.getElementById("attentionAudio");
-    speechSynthesis.cancel();
+    speechSynthesis.cancel(); // Stop any existing speech
 
-    // Play the audio first
-    recordedAudio.play();
-
-    recordedAudio.onended = () => {
+    // Ensure audio is allowed to play
+    recordedAudio.currentTime = 0;
+    recordedAudio.play().then(() => {
+      // Wait until the chime finishes
+      recordedAudio.onended = () => {
         const message = `Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table is number ${guest.table}. Your presence here today is very important to us. Thank you.`;
 
+        // Speak after audio finishes
         const speak = () => {
-            const voices = speechSynthesis.getVoices();
-            if (!voices.length) {
-                return setTimeout(speak, 100);
-            }
+          const voices = speechSynthesis.getVoices();
 
-            const utterance = new SpeechSynthesisUtterance(message);
-            utterance.rate = 0.95;
-            utterance.pitch = 1;
-            const femaleVoice = voices.find(v =>
-                v.name.toLowerCase().includes("zira") ||
-                v.name.toLowerCase().includes("samantha") ||
-                v.name.toLowerCase().includes("female")
-            );
-            if (femaleVoice) utterance.voice = femaleVoice;
-            speechSynthesis.speak(utterance);
+          if (!voices.length) {
+            // Retry after a moment if voices haven't loaded
+            return setTimeout(speak, 100);
+          }
+
+          const utterance = new SpeechSynthesisUtterance(message);
+          utterance.rate = 0.95;
+          utterance.pitch = 1;
+
+          // Try to pick a female voice
+          const femaleVoice = voices.find(v =>
+            v.name.toLowerCase().includes("samantha") ||
+            v.name.toLowerCase().includes("zira") ||
+            v.name.toLowerCase().includes("female")
+          );
+          if (femaleVoice) {
+            utterance.voice = femaleVoice;
+          }
+
+          speechSynthesis.speak(utterance);
         };
 
         speak();
-    };
-});
-});
+      };
+    }).catch(error => {
+      console.error("Audio playback failed:", error);
+    });
+  });
        
     </script>
     <script>
