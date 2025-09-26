@@ -311,39 +311,138 @@ h2 {
 
         const savedPositions = {
 
-"1": {    "left": "70%",    "top": "12%"  },
-  "2": {    "left": "80%",    "top": "12%"  },
-  "3": {    "left": "90%",    "top": "12%"  },
-  "4": {    "left": "10%",    "top": "10%"  },
-  "5": {    "left": "20%",    "top": "10%"  },
-  "6": {    "left": "30%",    "top": "10%"  },
-  "7": {    "left": "10%",    "top": "30%"  },
-  "8": {    "left": "20%",    "top": "30%"  },
-  "9": {    "left": "30%",    "top": "30%"  },
-  "10": {    "left": "70%",    "top": "30%"  },
-  "11": {    "left": "80%",    "top": "30%"  },
-  "12": {    "left": "90%",    "top": "30%"  },
-  "13": {    "left": "10%",    "top": "50%"  },
-  "14": {    "left": "20%",    "top": "50%"  },
-  "15": {    "left": "30%",    "top": "50%"  },
-  "16": {    "left": "70%",    "top": "50%"  },
-  "17": {    "left": "80%",    "top": "50%"  },
-  "18": {    "left": "90%",    "top": "50%"  },
-  "19": {    "left": "10%",    "top": "70%"  },
-  "20": {    "left": "20%",    "top": "70%"  },
-  "21": {    "left": "30%",    "top": "70%"  },
-  "22": {    "left": "80%",    "top": "90%"  },
-  "23": {    "left": "80%",    "top": "70%"  },
-  "24": {    "left": "90%",    "top": "70%"  },
-  "25": {    "left": "10%",    "top": "90%"  },
-  "26": {    "left": "20%",    "top": "90%"  },
-  "27": {    "left": "30%",    "top": "90%"  },
-  "28": {    "left": "40%",    "top": "90%"  },
-  "29": {    "left": "50%",    "top": "90%"  },
-  "30": {    "left": "60%",    "top": "90%"  },
-  "31": {    "left": "70%",    "top": "90%"  },
-  "BAND": {    "left": "70%",    "top": "70%"  },
-  "Help": {    "left": "90%",    "top": "90%"  }
+"1": {
+    "left": "70%",
+    "top": "12%"
+  },
+  "2": {
+    "left": "80%",
+    "top": "12%"
+  },
+  "3": {
+    "left": "90%",
+    "top": "12%"
+  },
+  "4": {
+    "left": "10%",
+    "top": "10%"
+  },
+  "5": {
+    "left": "20%",
+    "top": "10%"
+  },
+  "6": {
+    "left": "30%",
+    "top": "10%"
+  },
+  "7": {
+    "left": "10%",
+    "top": "30%"
+  },
+  "8": {
+    "left": "20%",
+    "top": "30%"
+  },
+  "9": {
+    "left": "30%",
+    "top": "30%"
+  },
+  "10": {
+    "left": "70%",
+    "top": "30%"
+  },
+  "11": {
+    "left": "80%",
+    "top": "30%"
+  },
+  "12": {
+    "left": "90%",
+    "top": "30%"
+  },
+  "13": {
+    "left": "10%",
+    "top": "50%"
+  },
+  "14": {
+    "left": "20%",
+    "top": "50%"
+  },
+  "15": {
+    "left": "30%",
+    "top": "50%"
+  },
+  "16": {
+    "left": "70%",
+    "top": "50%"
+  },
+  "17": {
+    "left": "80%",
+    "top": "50%"
+  },
+  "18": {
+    "left": "90%",
+    "top": "50%"
+  },
+  "19": {
+    "left": "10%",
+    "top": "70%"
+  },
+  "20": {
+    "left": "20%",
+    "top": "70%"
+  },
+  "21": {
+    "left": "30%",
+    "top": "70%"
+  },
+  "22": {
+    "left": "80%",
+    "top": "90%"
+  },
+  "23": {
+    "left": "80%",
+    "top": "70%"
+  },
+  "24": {
+    "left": "90%",
+    "top": "70%"
+  },
+  "25": {
+    "left": "10%",
+    "top": "90%"
+  },
+  "26": {
+    "left": "20%",
+    "top": "90%"
+  },
+  "27": {
+    "left": "30%",
+    "top": "90%"
+  },
+  "28": {
+    "left": "40%",
+    "top": "90%"
+  },
+  "29": {
+    "left": "50%",
+    "top": "90%"
+  },
+  "30": {
+    "left": "60%",
+    "top": "90%"
+  },
+  "31": {
+    "left": "70%",
+    "top": "90%"
+  },
+  "BAND": {
+    "left": "70%",
+    "top": "70%"
+  },
+  "Help": {
+    "left": "90%",
+    "top": "90%"
+  }
 };
 
 // Apply saved positions
@@ -402,49 +501,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
                // SPEAK greeting with female voice
 
-             //document.getElementById("findTableButton").addEventListener("click", () => {
-    const recordedAudio = document.getElementById("attentionAudio");
-    speechSynthesis.cancel(); // Stop any existing speech
+               const recordedAudio = document.getElementById("attentionAudio");
+        speechSynthesis.cancel();
+        recordedAudio.play();
+        recordedAudio.onended = () => {
+            const message = `Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table is number ${guest.table}. Your presence here today is very important to us. Thank you.`;
+            const utterance = new SpeechSynthesisUtterance(message);
+            utterance.rate = 0.95; utterance.pitch = 1;
+            const voices = speechSynthesis.getVoices();
+            const femaleVoice = voices.find(v => v.name.toLowerCase().includes("zira") || v.name.toLowerCase().includes("samantha"));
+            if(femaleVoice) utterance.voice = femaleVoice;
+            speechSynthesis.speak(utterance);
+};
+            });
 
-    // Ensure audio is allowed to play
-    recordedAudio.currentTime = 0;
-    recordedAudio.play().then(() => {
-      // Wait until the chime finishes
-      recordedAudio.onended = () => {
-        const message = `Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table is number ${guest.table}. Your presence here today is very important to us. Thank you.`;
-
-        // Speak after audio finishes
-        const speak = () => {
-          const voices = speechSynthesis.getVoices();
-
-          if (!voices.length) {
-            // Retry after a moment if voices haven't loaded
-            return setTimeout(speak, 100);
-          }
-
-          const utterance = new SpeechSynthesisUtterance(message);
-          utterance.rate = 0.95;
-          utterance.pitch = 1;
-
-          // Try to pick a female voice
-          const femaleVoice = voices.find(v =>
-            v.name.toLowerCase().includes("samantha") ||
-            v.name.toLowerCase().includes("zira") ||
-            v.name.toLowerCase().includes("female")
-          );
-          if (femaleVoice) {
-            utterance.voice = femaleVoice;
-          }
-
-          speechSynthesis.speak(utterance);
-        };
-
-        speak();
-      };
-    }).catch(error => {
-      console.error("Audio playback failed:", error);
+            resultsDiv.appendChild(list);
+        }
     });
-  });
+});
        
     </script>
     <script>
@@ -475,13 +549,10 @@ const tableMap = {
   33: "Help",    // Example: 5 → VIP
   32: "22"  // Example: 10 → Bride
 };
- for (let row = 1; row <= rows; row++) { for (let col = 1; col <= cols; col++)
-     { if (row < 5 && (col === 4 || col === 5 || col === 6)) 
-         continue; const circle = document.createElement("div"); 
-      circle.classList.add("circle"); let label = tableMap[tableNumber] || tableNumber; 
-      circle.textContent = label; tableNumber++; 
-    
-      // Calculate positions as percentages (so they scale with image)
+ for (let row = 1; row <= rows; row++) { for (let col = 1; col <= cols; col++) { if (row < 5 && (col === 4 || col === 5 || col === 6)) continue; const circle = document.createElement("div"); circle.classList.add("circle"); let label = tableMap[tableNumber] || tableNumber; circle.textContent = label; tableNumber++; // Calculate positions as percentages (so they scale with image) let margin = 10; // percent inward from each edge let leftPercent = margin + ((col - 1) / (cols - 1)) * (100 - 2 * margin); let topPercent = margin + ((row - 1) / (rows - 1)) * (100 - 2 * margin); circle.style.left = leftPercent + "%"; circle.style.top = topPercent + "%"; container.appendChild(circle); } }
+
+
+                // Calculate positions as percentages (so they scale with image)
 let margin = 10; // percent inward from each edge
 let leftPercent = margin + ((col - 1) / (cols - 1)) * (100 - 2 * margin);
 let topPercent  = margin + ((row - 1) / (rows - 1)) * (100 - 2 * margin);
