@@ -590,9 +590,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const container = document.getElementById("circlesContainer");
         
 const tableMap = {
-  //22: "BAND",     // Change 4 → 33
+  22: "BAND",     // Change 4 → 33
   //33: "Help",    // Example: 5 → VIP
-  22: "22"  // Example: 10 → Bride
+  //22: "22"  // Example: 10 → Bride
 };
  for (let row = 1; row <= rows; row++) { for (let col = 1; col <= cols; col++) { if (row < 5 && (col === 4 || col === 5 || col === 6)) continue; const circle = document.createElement("div"); circle.classList.add("circle"); let label = tableMap[tableNumber] || tableNumber; circle.textContent = label; tableNumber++; // Calculate positions as percentages (so they scale with image) let margin = 10; // percent inward from each edge let leftPercent = margin + ((col - 1) / (cols - 1)) * (100 - 2 * margin); let topPercent = margin + ((row - 1) / (rows - 1)) * (100 - 2 * margin); circle.style.left = leftPercent + "%"; circle.style.top = topPercent + "%"; container.appendChild(circle); } }
 
