@@ -90,8 +90,11 @@ h2 {
             color: #333;
         }
       .layout-container {
-            position: relative;
-            display: inline-block;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    min-height: 180%;   /* increase until table 36 fits */
+    overflow: visible; /* allow circles beyond image */
         }
         .venue-img {
             max-width: 100%;
