@@ -515,8 +515,20 @@ h2 {
   "33": {
     "left": "90%",
     "top": "116%"
-  }
+  },
+    "34": { left: "90%", top: "130%" },
+    "35": { left: "90%", top: "144%" },
+    "36": { left: "90%", top: "158%" }
 };
+ Object.keys(savedPositions).forEach(num => {
+    const circle = document.createElement("div");
+    circle.className = "circle";
+    circle.textContent = num;
+    circle.style.left = savedPositions[num].left;
+    circle.style.top  = savedPositions[num].top;
+    container.appendChild(circle);
+  });
+
 
 // Apply saved positions
 document.querySelectorAll(".circle").forEach(circle => {
