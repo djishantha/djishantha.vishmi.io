@@ -1,158 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <h1 class="main-welcome">WELCOME !</h1>
-    <h2>Harshana & Vishmi Wedding</h2>
-<h3 class="hotel-name">JETWING BLUE - NEGOMBO</h3>
-    <style>
-        body {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ---------- GLOBAL ---------- */
+body {
     font-family: sans-serif;
     background-color: #87CEEB;
     text-align: center;
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
-        }
+}
+
+/* ---------- TOP HEADINGS ---------- */
 .main-welcome {
-    font-size: 64px; /* Double typical title (e.g. if original was ~32px) */
+    font-size: 64px;
     color: blue;
-    font-family: 'Cursive', 'Brush Script MT', sans-serif;
-    margin-bottom: 10px;
+    font-family: 'Brush Script MT', cursive;
+    margin: 20px 0 5px;
 }
 
 h2 {
     font-size: 32px;
-    margin: 10px 0;
+    margin: 5px 0;
 }
+
 .hotel-name {
-    font-size: 16px; /* Half of h2 */
+    font-size: 16px;
     color: green;
-    font-family: 'Georgia', 'Times New Roman', serif;
-    margin-top: 5px;
+    font-family: Georgia, serif;
+    margin-bottom: 20px;
 }
-        .container {
+
+/* ---------- WHITE CARD ---------- */
+.container {
     background-color: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
-    margin: 0 auto;
+    margin: 0 auto 40px;
     max-width: 500px;
     width: 90%;
-    box-sizing: border-box;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-     
-        input {
-            padding: 10px;
-            font-size: 16px;
-            margin: 10px 5px;
-        }
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
 
-        button {
-            padding: 10px 15px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
+/* MOVE TITLE UP */
+.find-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
 
-        button:hover {
-            background-color: #0056b3;
-        }
-        #findCarParkBtn {
-    margin-top: 40px;
-    padding: 10px 5px;
+/* ---------- INPUTS ---------- */
+input {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px 5px;
+}
+
+button {
+    padding: 10px 15px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #28a745;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
 }
 
-#findCarParkBtn:hover {
-    background-color: #1e7e34;
-}
-        #thankYouText {
-  margin-top: 30px;
-  font-size: 20px;
-  font-weight: bold;
-  color: black;
-  text-align: center;
+button:hover {
+    background-color: #0056b3;
 }
 
-        #results {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #333;
-        }
-      .layout-container {
+/* ---------- RESULTS ---------- */
+#results {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+/* ---------- IMAGE LAYOUT ---------- */
+.layout-container {
     position: relative;
-    display: block;
-    overflow: visible;
-          
-            }
-        .venue-img {
-           // max-width: 100%;
-            //height: auto;
-           // display: block;
-           // border-radius: 10px;
     width: 100%;
-    height: 100%;       /* stretch vertically */
-    object-fit: fill;   /* stretch image */
+    margin-top: 20px;
+}
+
+.venue-img {
+    width: 100%;
     display: block;
-        }
- .circle {
-  position: absolute;
-  width: 8%;   /* relative size instead of fixed 25px */
-  aspect-ratio: 1/1;  /* keeps it round */
-  background-color: blue;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 0.8em;
-  transform: translate(-50%, -50%); /* center on the % position */
 }
+
+/* ---------- TABLE CIRCLES ---------- */
+.circle {
+    position: absolute;
+    width: 8%;
+    aspect-ratio: 1 / 1;
+    background-color: blue;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+}
+
 .circle.selected {
-  border: 2px solid yellow;
+    border: 2px solid yellow;
 }
+
+/* ---------- BLINK ANIMATION ---------- */
 @keyframes blinkColors {
-  0%   { background-color: blue; }
-  33%  { background-color: #00FF00; }  /* bright green */
-  66%  { background-color: #FFFF00; }  /* bright yellow */
-  88%  { background-color: #FF0000; }  /* bright red */
-  100% { background-color: blue; }
+    0% { background-color: blue; }
+    33% { background-color: #00ff00; }
+    66% { background-color: #ffff00; }
+    100% { background-color: red; }
 }
 
 .circle.blink {
-  animation: blinkColors 1.5s infinite;  /* adjust speed as needed */
+    animation: blinkColors 1.5s infinite;
 }
 
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Find Your Table</h1>
-        <input type="text" id="firstNameInput" placeholder="Enter your first name">
-        <button id="findTableBtn">Table Number</button>
-               <div id="results"></div>
-         <div class="layout-container">
-            <img src="Jetwing Blue.jpg" alt="Wedding Table Plan" class="venue-img">
-            <div id="circlesContainer"></div>
-        </div>
+/* ---------- FOOTER ---------- */
+#findCarParkBtn {
+    margin-top: 30px;
+    background-color: #28a745;
+}
 
-        <button id="findCarParkBtn">Find Car Park</button>
-         <p id="thankYouText">THANK YOU</p>
+#findCarParkBtn:hover {
+    background-color: #1e7e34;
+}
+
+#thankYouText {
+    margin-top: 40px;
+    font-size: 20px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP -->
+<h1 class="main-welcome">WELCOME !</h1>
+<h2>Harshana & Vishmi Wedding</h2>
+<h3 class="hotel-name">JETWING BLUE - NEGOMBO</h3>
+
+<!-- WHITE CARD -->
+<div class="container">
+
+    <h1 class="find-title">Find Your Table</h1>
+
+    <input type="text" id="firstNameInput" placeholder="Enter your first name">
+    <button id="findTableBtn">Table Number</button>
+
+    <div id="results"></div>
+
+    <div class="layout-container">
+        <img src="Jetwing Blue.jpg" class="venue-img" alt="Wedding Layout">
+        <div id="circlesContainer"></div>
     </div>
 
-    <script>
-        const guests = [
+    <button id="findCarParkBtn">Find Car Park</button>
+    <p id="thankYouText">THANK YOU</p>
+
+</div>
+
+<!-- ---------- SCRIPT ---------- -->
+<script>
+const guests = [
  [
   { firstName: "Kumudu", lastName: "Hewapathirana", table: 25 },
   { firstName: "Shiromi", lastName: "Sirithunga", table: 25 },
@@ -493,8 +511,8 @@ h2 {
   { firstName: "Teela", lastName: "Ranjani", table: 19 },
   { firstName: "Buddima", lastName: "Geethani", table: 19 },
   { firstName: "Nalani", lastName: "Perera", table: 19 }
-  
-  ];
+
+ ];
 
         const savedPositions = {
 "1": {
@@ -834,5 +852,6 @@ document.addEventListener("keydown", (e) => {
 }
 
 </script>
+
 </body>
 </html>
