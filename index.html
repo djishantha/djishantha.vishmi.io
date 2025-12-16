@@ -692,30 +692,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 
                 // HIGHLIGHT and make blink for each matching table
                circles.forEach(circle => {
-            if (circle.textContent == guest.table) {
-                circle.classList.add("blink");
-            }
-        });
+                   if (circle.textContent == guest.table) circle.classList.add("blink");
+                });
+
+                // SPEAK greeting
+                const message = `Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table number is ${guest.table}. Your presence here today is very important to us. Thank you.`;
+                speechSynthesis.cancel(); // stop previous speech if any
+                const utterance = new SpeechSynthesisUtterance(message);
+                utterance.rate = 0.95;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
+            });
+
+            resultsDiv.appendChild(list);
+        }
     });
-
-    results.appendChild(list);
-
-    /* ---------- 🔊 VOICE (ONLY ONE MATCH) ---------- */
-    if (matches.length === 1) {
-        const g = matches[0];
-        const message = `Good evening and welcome ${g.firstName} ${g.lastName}. Your table number is ${g.table}. Your presence here today is very important to us. Thank you.`;
-
-        const utterance = new SpeechSynthesisUtterance(message);
-        utterance.rate = 0.95;
-        utterance.pitch = 1;
-        speechSynthesis.speak(utterance);
-    }
 });
 
-/* ---------- STOP VOICE WHILE TYPING ---------- */
-firstNameInput.addEventListener("input", () => {
-    speechSynthesis.cancel();
-})
        
     </script>
      <script>
