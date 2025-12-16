@@ -695,14 +695,34 @@ document.addEventListener("DOMContentLoaded", function () {
                circles.forEach(circle => {
                    if (circle.textContent == guest.table) circle.classList.add("blink");
                 });
+                speechSynthesis.cancel();
+
+let message = "";
+
+if (matches.length === 1) {
+  const g = matches[0];
+  message = `Good evening and welcome ${g.firstName} ${g.lastName}. 
+  Your table number is ${g.table}. 
+  Your presence here today is very important to us. Thank you.`;
+} else {
+  message = `Good evening and welcome all. 
+  Your table numbers are displayed. 
+  Your presence here today is very important to us. Thank you.`;
+}
+
+const utterance = new SpeechSynthesisUtterance(message);
+utterance.rate = 0.95;
+utterance.pitch = 1;
+speechSynthesis.speak(utterance);
+
 
                 // SPEAK greeting
-                const message = `Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table number is ${guest.table}. Your presence here today is very important to us. Thank you.`;
-                speechSynthesis.cancel(); // stop previous speech if any
-                const utterance = new SpeechSynthesisUtterance(message);
-                utterance.rate = 0.95;
-                utterance.pitch = 1;
-                speechSynthesis.speak(utterance);
+               // const message = `Good evening and welcome ${guest.firstName} ${guest.lastName}. Your table number is ${guest.table}. Your presence here today is very important to us. Thank you.`;
+               // speechSynthesis.cancel(); // stop previous speech if any
+               // const utterance = new SpeechSynthesisUtterance(message);
+                //utterance.rate = 0.95;
+                //utterance.pitch = 1;
+                //speechSynthesis.speak(utterance);
             });
 
             resultsDiv.appendChild(list);
